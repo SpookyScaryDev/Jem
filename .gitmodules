@@ -1,0 +1,3 @@
+[submodule "Jem/Dependencies/Logger"]
+	path = Jem/Dependencies/Logger
+	url = https://github.com/SpookyScaryStudios/Logger
