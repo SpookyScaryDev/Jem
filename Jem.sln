@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jem", "Jem\Jem.vcxproj", "{A2B39890-1680-4165-AFAA-B1053A169C6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Debug|x64.ActiveCfg = Debug|x64
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Debug|x64.Build.0 = Debug|x64
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Debug|x86.ActiveCfg = Debug|x64
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Release|x64.ActiveCfg = Release|x64
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Release|x64.Build.0 = Release|x64
+		{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}.Release|x86.ActiveCfg = Release|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Debug|x64.ActiveCfg = Debug|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Debug|x64.Build.0 = Debug|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Debug|x86.ActiveCfg = Debug|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Release|x64.ActiveCfg = Release|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Release|x64.Build.0 = Release|x64
+		{A2B39890-1680-4165-AFAA-B1053A169C6C}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AFD444D-4800-478C-BF86-3A8B856B04A3}
+	EndGlobalSection
+EndGlobal
