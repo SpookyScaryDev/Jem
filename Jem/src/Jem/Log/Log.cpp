@@ -2,19 +2,17 @@
 
 namespace Jem {
 
-	//std::shared_ptr<logger::Logger> Log::pCoreLogger;
-	//std::shared_ptr<logger::Logger> Log::pLogger;
-	logger::Logger* Log::pCoreLogger;
-	logger::Logger* Log::pLogger;
+	logger::Logger* Log::CoreLogger;
+	logger::Logger* Log::ClientLogger;
 
-	void Log::init() {
-		pCoreLogger = new logger::Logger(logger::LOG_CONSOLE, logger::LOG_MESSAGE, "CoreLogger", "");
-		pLogger = new logger::Logger(logger::LOG_CONSOLE, logger::LOG_MESSAGE, "ClientLogger", "");
+	void Log::Init() {
+		CoreLogger = new logger::Logger(logger::LOG_CONSOLE, logger::LOG_MESSAGE, "CoreLogger", "");
+		ClientLogger = new logger::Logger(logger::LOG_CONSOLE, logger::LOG_MESSAGE, "ClientLogger", "");
 	}
 
-	void Log::shutdown() {
-		delete pCoreLogger;
-		delete pLogger;
+	void Log::Shutdown() {
+		delete CoreLogger;
+		delete ClientLogger;
 	}
 
 }

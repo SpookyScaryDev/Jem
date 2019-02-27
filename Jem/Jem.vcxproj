@@ -80,12 +80,20 @@
     <ClInclude Include="src\Jem\Common.h" />
     <ClInclude Include="src\Jem.h" />
     <ClInclude Include="src\Jem\Application\Application.h" />
+    <ClInclude Include="src\Jem\GameObject\Components\Component.h" />
+    <ClInclude Include="src\Jem\GameObject\Components\Components.h" />
+    <ClInclude Include="src\Jem\GameObject\Components\TransformComponent.h" />
+    <ClInclude Include="src\Jem\GameObject\GameObject.h" />
     <ClInclude Include="src\Jem\Log\Log.h" />
+    <ClInclude Include="src\Jem\utils\StringID.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Jem\Application\Application.cpp" />
+    <ClCompile Include="src\Jem\GameObject\Components\Component.cpp" />
+    <ClCompile Include="src\Jem\GameObject\Components\TransformComponent.cpp" />
     <ClCompile Include="src\Jem\EnteryPoint.h" />
     <ClCompile Include="src\Jem\Log\Log.cpp" />
+    <ClCompile Include="src\Jem\utils\StringID.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

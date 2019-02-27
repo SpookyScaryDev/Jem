@@ -10,20 +10,20 @@ namespace Jem {
 	class JEM_API Log
 	{
 	public:
-		static void                        init();
-		static void                        shutdown();
+		static void                        Init();
+		static void                        Shutdown();
 
-		static logger::Logger*             pCoreLogger;
-		static logger::Logger*             pLogger;
+		static logger::Logger*             CoreLogger;
+		static logger::Logger*             ClientLogger;
 	};
 }
 
 // Core log macros.
-#define JEM_CORE_MESSAGE(...)     ::Jem::Log::pCoreLogger->logMessage("Core: ", __VA_ARGS__)
-#define JEM_CORE_WARNING(...)     ::Jem::Log::pCoreLogger->logWarning("Core: ", __VA_ARGS__)
-#define JEM_CORE_ERROR(...)       ::Jem::Log::pCoreLogger->logError("Core: ", __VA_ARGS__); __debugbreak()
+#define JEM_CORE_MESSAGE(...)     ::Jem::Log::CoreLogger->logMessage("Core: ", __VA_ARGS__)
+#define JEM_CORE_WARNING(...)     ::Jem::Log::CoreLogger->logWarning("Core: ", __VA_ARGS__)
+#define JEM_CORE_ERROR(...)       ::Jem::Log::CoreLogger->logError("Core: ", __VA_ARGS__); __debugbreak()
 
 // Client log macros.
-#define JEM_MESSAGE(...)          ::Jem::Log::pLogger->logMessage(__VA_ARGS__)
-#define JEM_WARNING(...)          ::Jem::Log::pLogger->logWarning(__VA_ARGS__)
-#define JEM_ERROR(...)            ::Jem::Log::pLogger->logError(__VA_ARGS__); __debugbreak()
+#define JEM_MESSAGE(...)          ::Jem::Log::ClientLogger->logMessage(__VA_ARGS__)
+#define JEM_WARNING(...)          ::Jem::Log::ClientLogger->logWarning(__VA_ARGS__)
+#define JEM_ERROR(...)            ::Jem::Log::ClientLogger->logError(__VA_ARGS__); __debugbreak()

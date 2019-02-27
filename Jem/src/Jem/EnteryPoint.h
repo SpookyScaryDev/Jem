@@ -8,13 +8,14 @@ namespace Jem {
 }
 
 int main(int argc, char **argv) {
-	Jem::Log::init();
+	Jem::Log::Init();
 
 	auto applicaton = Jem::CreateApplication();
-	applicaton->run();
+	applicaton->Run();
+
 	delete applicaton;
 
-	Jem::Log::shutdown();
+	Jem::Log::Shutdown();
 
 	return 0;
 }
