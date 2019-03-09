@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Examples\Sandbox\Sandbox.vcxproj", "{2EB03C84-8EEC-42CF-8A7B-B34EB7F83145}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jem", "Jem\Jem.vcxproj", "{A2B39890-1680-4165-AFAA-B1053A169C6C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jem", "Engine\Jem.vcxproj", "{A2B39890-1680-4165-AFAA-B1053A169C6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
