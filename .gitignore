@@ -1,7 +1,13 @@
 # Directories
 .vs/
-bin/
-bin-int/
+
+Engine/Binaries
+Engine/Intermediate
+
+Examples/Binaries
+Examples/Intermediate
+
+Example
 
 # Files
 *.user
