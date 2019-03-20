@@ -1,3 +1,5 @@
+#include "JemPCH.h"
+
 #include "Log/Log.h"
 
 #include "../Vendor/Logger/include/Logger/Logger.h"

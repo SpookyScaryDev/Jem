@@ -1,3 +1,5 @@
+#include "JemPCH.h"
+
 #include "GameObject/Components/TransformComponent.h"
 
 namespace Jem {

@@ -28,6 +28,9 @@
     <Filter Include="Source\Application">
       <UniqueIdentifier>{19D87881-05BC-39D7-6E1C-342A5A1F2459}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Core">
+      <UniqueIdentifier>{6E95150F-DA4A-8E04-633F-88DBCFF38408}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source\GameObject">
       <UniqueIdentifier>{16243BD7-823A-396D-CBB1-C48E37070AF5}</UniqueIdentifier>
     </Filter>
@@ -46,6 +49,9 @@
       <Filter>Include\Application</Filter>
     </ClInclude>
     <ClInclude Include="Include\Core\Core.h">
+      <Filter>Include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Core\JemPCH.h">
       <Filter>Include\Core</Filter>
     </ClInclude>
     <ClInclude Include="Include\GameObject\Components\Component.h">
@@ -73,6 +79,9 @@
   <ItemGroup>
     <ClCompile Include="Source\Application\Application.cpp">
       <Filter>Source\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\JemPCH.cpp">
+      <Filter>Source\Core</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameObject\Components\Component.cpp">
       <Filter>Source\GameObject\Components</Filter>

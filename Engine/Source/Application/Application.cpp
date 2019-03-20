@@ -1,10 +1,9 @@
+#include "JemPCH.h"
+
 #include "Application/Application.h"
-#include <Log/Log.h>
 #include <GameObject/GameObject.h>
 #include <GameObject/Components/Component.h>
 #include <GameObject/Components/Components.h>
-// TODO: pch
-#include <iostream>
 
 namespace Jem {
 

@@ -1,5 +1,6 @@
+#include "JemPCH.h"
+
 #include "Utils/StringID.h"
-#include <functional>
 
 namespace Jem {
 

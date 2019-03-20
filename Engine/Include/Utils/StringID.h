@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Core.h"
-#include <functional>
+#include <functional> // TODO: Maybe include pch?
 
 // Returns a StringID object.
 #define SID(str) StringID{ Jem::HashString(str), str } // <- Is there a better way?

@@ -25,12 +25,16 @@ project "Jem"
     targetdir ("../Engine/Binaries/" .. outputdir)
     objdir    ("../Engine/Intermediate/" .. outputdir)
 
+    pchheader "JemPCH.h"
+    pchsource "../Engine/Source/Core/JemPCH.cpp"
+
     files {
         "../Engine/Include/**.h",
-        "../Engine/Source/**.cpp",
+        "../Engine/Source/**.cpp"
     }
 
     includedirs {
+        "../Engine/Include/Core",    --Needed for pch.
         "../Engine/Include"
     }
 
