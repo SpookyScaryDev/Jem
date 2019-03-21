@@ -10,3 +10,8 @@
 #include <sstream>
 
 #include <Log/Log.h>
+
+#ifdef JEM_WINDOWS
+	#include <Windows.h>>
+
+#endif // JEM_WINDOWS
