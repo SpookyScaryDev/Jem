@@ -2,8 +2,8 @@
 
 #include <Core/Core.h>
 #include <GameObject/GameObject.h>
-#include <GameObject/Components/Component.h>
-#include <GameObject/Components/Components.h>
+#include <GameObject/Component.h>
+#include <GameObject/Components.h>
 #include <Utils/StringID.h>
 
 namespace Jem {

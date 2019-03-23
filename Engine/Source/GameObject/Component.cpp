@@ -1,6 +1,6 @@
 #include "JemPCH.h"
 
-#include "GameObject/Components/Component.h"
+#include "GameObject/Component.h"
 
 namespace Jem {
 

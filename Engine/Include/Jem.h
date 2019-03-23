@@ -16,5 +16,5 @@
 #include <GameObject/GameObject.h>
 
 // Components
-#include <GameObject/Components/Component.h>
-#include <GameObject/Components/TransformComponent.h>
+#include <GameObject/Component.h>
+#include <GameObject/TransformComponent.h>

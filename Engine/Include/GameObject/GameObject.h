@@ -2,8 +2,8 @@
 
 #include <Core/Core.h>
 #include <Utils/StringID.h>
-#include <GameObject/Components/Component.h>
-#include <GameObject/Components/TransformComponent.h>
+#include <GameObject/Component.h>
+#include <GameObject/TransformComponent.h>
 
 namespace Jem {
 	

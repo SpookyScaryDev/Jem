@@ -13,9 +13,6 @@
     <Filter Include="Include\GameObject">
       <UniqueIdentifier>{49BE10D1-35A2-D126-9E02-CC798A05BCA8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Include\GameObject\Components">
-      <UniqueIdentifier>{BE83F0F8-2A9C-D722-F348-67BC5F206CBC}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Include\Log">
       <UniqueIdentifier>{BABB2986-2671-A27B-AF65-9C521B1A997F}</UniqueIdentifier>
     </Filter>
@@ -34,9 +31,6 @@
     <Filter Include="Source\GameObject">
       <UniqueIdentifier>{16243BD7-823A-396D-CBB1-C48E37070AF5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\GameObject\Components">
-      <UniqueIdentifier>{6B8F93C7-574A-8373-0002-FCBDEC9BCD03}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Log">
       <UniqueIdentifier>{27BEC236-1376-0484-7C7D-DDDF68549F74}</UniqueIdentifier>
     </Filter>
@@ -54,16 +48,16 @@
     <ClInclude Include="Include\Core\JemPCH.h">
       <Filter>Include\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Include\GameObject\Components\Component.h">
-      <Filter>Include\GameObject\Components</Filter>
+    <ClInclude Include="Include\GameObject\Component.h">
+      <Filter>Include\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Include\GameObject\Components\Components.h">
-      <Filter>Include\GameObject\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\GameObject\Components\TransformComponent.h">
-      <Filter>Include\GameObject\Components</Filter>
+    <ClInclude Include="Include\GameObject\Components.h">
+      <Filter>Include\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Include\GameObject\GameObject.h">
+      <Filter>Include\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\GameObject\TransformComponent.h">
       <Filter>Include\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Include\Jem.h">
@@ -83,11 +77,11 @@
     <ClCompile Include="Source\Core\JemPCH.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameObject\Components\Component.cpp">
-      <Filter>Source\GameObject\Components</Filter>
+    <ClCompile Include="Source\GameObject\Component.cpp">
+      <Filter>Source\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameObject\Components\TransformComponent.cpp">
-      <Filter>Source\GameObject\Components</Filter>
+    <ClCompile Include="Source\GameObject\TransformComponent.cpp">
+      <Filter>Source\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Source\Log\Log.cpp">
       <Filter>Source\Log</Filter>

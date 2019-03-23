@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <GameObject/Components/Component.h>
+#include <GameObject/Component.h>
 
 namespace Jem {
 
