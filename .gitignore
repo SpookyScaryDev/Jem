@@ -7,7 +7,7 @@ Engine/Intermediate
 Examples/Binaries
 Examples/Intermediate
 
-Example
+Build/premake5
 
 # Files
 *.user

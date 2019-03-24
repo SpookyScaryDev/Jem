@@ -91,9 +91,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>Binaries\Debug-windows-x86_64\Jem.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST Binaries\Debug-windows-x86_64\Jem.dll\ (xcopy /Q /E /Y /I Binaries\Debug-windows-x86_64\Jem.dll "..\Examples\Binaries\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I Binaries\Debug-windows-x86_64\Jem.dll "..\Examples\Binaries\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
     <ClCompile>
@@ -116,9 +113,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>Binaries\Development-windows-x86_64\Jem.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST Binaries\Development-windows-x86_64\Jem.dll\ (xcopy /Q /E /Y /I Binaries\Development-windows-x86_64\Jem.dll "..\Examples\Binaries\Development-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I Binaries\Development-windows-x86_64\Jem.dll "..\Examples\Binaries\Development-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
     <ClCompile>
@@ -141,9 +135,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>Binaries\Ship-windows-x86_64\Jem.lib</ImportLibrary>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST Binaries\Ship-windows-x86_64\Jem.dll\ (xcopy /Q /E /Y /I Binaries\Ship-windows-x86_64\Jem.dll "..\Examples\Binaries\Ship-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I Binaries\Ship-windows-x86_64\Jem.dll "..\Examples\Binaries\Ship-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Include\Application\Application.h" />
