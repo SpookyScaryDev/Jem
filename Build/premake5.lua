@@ -2,13 +2,13 @@
 workspace "Jem"
     location "../"
 
-	architecture "x64"
-	startproject "Sandbox"
-
-	configurations {
-		"Debug",
-		"Development",
-		"Ship"
+    architecture "x64"
+    startproject "Sandbox"
+    
+    configurations {
+        "Debug",
+        "Development",
+        "Ship"
     }
 
 include "../Engine/Build"
