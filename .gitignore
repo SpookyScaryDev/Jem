@@ -7,7 +7,5 @@ Engine/Intermediate
 Examples/Sandbox/Binaries
 Examples/Sandbox/Intermediate
 
-Build/premake5
-
 # Files
 *.user
