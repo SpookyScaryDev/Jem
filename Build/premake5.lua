@@ -11,5 +11,7 @@ workspace "Jem"
         "Ship"
     }
 
-include "../Engine/Build"
-include "../Examples/Sandbox/Build"
+include "../Engine/Build/Jem.lua"
+
+group "Examples"
+include "../Examples/Sandbox/Build/Sandbox.lua"

@@ -55,22 +55,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\Binaries\Debug-windows-x86_64\Sandbox\</OutDir>
-    <IntDir>..\Intermediate\Debug-windows-x86_64\Sandbox\</IntDir>
+    <OutDir>Binaries\Debug-windows-x86_64\</OutDir>
+    <IntDir>Intermediate\Debug-windows-x86_64\</IntDir>
     <TargetName>Sandbox</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\Binaries\Development-windows-x86_64\Sandbox\</OutDir>
-    <IntDir>..\Intermediate\Development-windows-x86_64\Sandbox\</IntDir>
+    <OutDir>Binaries\Development-windows-x86_64\</OutDir>
+    <IntDir>Intermediate\Development-windows-x86_64\</IntDir>
     <TargetName>Sandbox</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\Binaries\Ship-windows-x86_64\Sandbox\</OutDir>
-    <IntDir>..\Intermediate\Ship-windows-x86_64\Sandbox\</IntDir>
+    <OutDir>Binaries\Ship-windows-x86_64\</OutDir>
+    <IntDir>Intermediate\Ship-windows-x86_64\</IntDir>
     <TargetName>Sandbox</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -90,7 +90,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll" ..\Binaries\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll" ..\Binaries\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll" Binaries\Debug-windows-x86_64 &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Debug-windows-x86_64\Jem.dll" Binaries\Debug-windows-x86_64 &gt; nul)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Development|x64'">
@@ -113,7 +113,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll" ..\Binaries\Development-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll" ..\Binaries\Development-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll" Binaries\Development-windows-x86_64 &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Development-windows-x86_64\Jem.dll" Binaries\Development-windows-x86_64 &gt; nul)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
@@ -136,7 +136,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>IF EXIST "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll" ..\Binaries\Ship-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll" ..\Binaries\Ship-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll"\ (xcopy /Q /E /Y /I "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll" Binaries\Ship-windows-x86_64 &gt; nul) ELSE (xcopy /Q /Y /I "..\..\Engine\Binaries\Ship-windows-x86_64\Jem.dll" Binaries\Ship-windows-x86_64 &gt; nul)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

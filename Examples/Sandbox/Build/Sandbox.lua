@@ -10,8 +10,8 @@ project "Sandbox"
     characterset  "MBCS"    --Only needed for my rubbish logging library.
                             --TODO: Replace my rubbish logging library!
 
-    targetdir ("../../Binaries/" .. outputdir .. "/Sandbox")
-    objdir    ("../../Intermediate/" .. outputdir .. "/Sandbox")
+    targetdir ("../Binaries/" .. outputdir)
+    objdir    ("../Intermediate/" .. outputdir)
 
     files {
         "../Source/**.h",
