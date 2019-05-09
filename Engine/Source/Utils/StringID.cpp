@@ -1,21 +1,14 @@
 #include "JemPCH.h"
 
 #include "Utils/StringID.h"
+#include "stdint.h"
 
 namespace Jem {
-
-	/*constexpr*/ std::size_t HashString(const char* str) {          
-		return std::hash<const char*>{}(str);                        
+	bool operator==(const StringID& left, const StringID& right) {
+		return left.mID == right.mID;
 	}
 
-	StringID& StringID::operator=(const StringID& s) {
-		StringID mID = SID((char*)s.mStringPtr);
-		mStringPtr = s.mStringPtr;
-
-		return *this;
+	bool operator!=(const StringID& left, const StringID& right) {
+		return left.mID != right.mID;
 	}
-}
-
-/*constexpr*/ std::size_t operator "" _sid(const char* str, size_t) { 
-	return Jem::HashString(str);
 }

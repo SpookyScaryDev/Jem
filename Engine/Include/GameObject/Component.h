@@ -16,6 +16,6 @@ namespace Jem {
 
 		virtual void        Update() = 0;
 
-		GameObjectID        mID;
+		StringID            mID;
 	};
 }

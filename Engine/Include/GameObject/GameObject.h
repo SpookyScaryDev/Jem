@@ -6,9 +6,8 @@
 #include <GameObject/TransformComponent.h>
 
 namespace Jem {
-	
 	template <typename T>
-	inline void AddComponents(GameObjectID gameObjectID, T component) {
+	inline void AddComponents(StringID gameObjectID, T component) {
 		Application* app = Application::GetApplication();
 
 		if (typeid(T) == typeid(TransformComponent)) {
@@ -20,14 +19,14 @@ namespace Jem {
 	}
 
 	template <typename Arg, typename ... Args>
-	inline void AddComponents(GameObjectID gameObjectID, Arg first, Args ... args) {
+	inline void AddComponents(StringID gameObjectID, Arg first, Args ... args) {
 		AddComponents(gameObjectID, first);
 		AddComponents(gameObjectID, args...);
 	}
 
 	template <typename ... Args>
-	inline GameObjectID CreateGameObject(const char* name, Args ... args) {
-		GameObjectID id = SID((char*)name);
+	inline StringID CreateGameObject(const char* name, Args ... args) {
+		StringID id = SID((char*)name);
 		AddComponents(id, args...);
 		return id;
 	}

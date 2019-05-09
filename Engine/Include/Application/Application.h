@@ -12,7 +12,7 @@ namespace Jem {
 	class JEM_API Application
 	{
 		template <typename T>
-		friend void AddComponents(GameObjectID gameObjectID, T component);
+		friend void AddComponents(StringID gameObjectID, T component);
 
 	public:
 		                    Application();
