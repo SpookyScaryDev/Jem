@@ -137,19 +137,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Include\Application\Application.h" />
+    <ClInclude Include="Include\Game\Game.h" />
     <ClInclude Include="Include\Core\Core.h" />
     <ClInclude Include="Include\Core\JemPCH.h" />
     <ClInclude Include="Include\GameObject\Component.h" />
-    <ClInclude Include="Include\GameObject\Components.h" />
-    <ClInclude Include="Include\GameObject\GameObject.h" />
     <ClInclude Include="Include\GameObject\TransformComponent.h" />
     <ClInclude Include="Include\Jem.h" />
     <ClInclude Include="Include\Log\Log.h" />
     <ClInclude Include="Include\Utils\StringID.h" />
+    <ClInclude Include="Include\Game\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Application\Application.cpp" />
+    <ClCompile Include="Source\Game\Game.cpp" />
     <ClCompile Include="Source\Core\JemPCH.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

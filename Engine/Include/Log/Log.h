@@ -5,9 +5,7 @@
 #include "../Vendor/Logger/include/Logger/Logger.h"
 
 namespace Jem {
-
-	class JEM_API Log
-	{
+	class JEM_API Log {
 	public:
 		static void                        Init();
 		static void                        Shutdown();

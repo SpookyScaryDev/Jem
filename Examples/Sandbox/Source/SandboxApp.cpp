@@ -1,7 +1,7 @@
 #include <Jem.h>
 
 
-class Sandbox : public Jem::Application {
+class Sandbox : public Jem::Game {
 
 };
 

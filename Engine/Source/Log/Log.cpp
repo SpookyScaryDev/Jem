@@ -5,7 +5,6 @@
 #include "../Vendor/Logger/include/Logger/Logger.h"
 
 namespace Jem {
-
 	logger::Logger* Log::CoreLogger;
 	logger::Logger* Log::ClientLogger;
 

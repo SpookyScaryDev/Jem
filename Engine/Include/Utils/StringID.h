@@ -19,8 +19,9 @@ namespace Jem {
 	}
 
 	// A struct containing a hashed string id and a pointer to its cstring.
-	struct JEM_API StringID
-	{
+	struct JEM_API StringID {
+		StringID&           operator=(const StringID& s);
+
 		const uint64_t      mID;
 		const char*         mStringPtr;
 	};

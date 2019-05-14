@@ -39,9 +39,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\Application\Application.h">
-      <Filter>Include\Application</Filter>
-    </ClInclude>
     <ClInclude Include="Include\Core\Core.h">
       <Filter>Include\Core</Filter>
     </ClInclude>
@@ -49,12 +46,6 @@
       <Filter>Include\Core</Filter>
     </ClInclude>
     <ClInclude Include="Include\GameObject\Component.h">
-      <Filter>Include\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\GameObject\Components.h">
-      <Filter>Include\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\GameObject\GameObject.h">
       <Filter>Include\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Include\GameObject\TransformComponent.h">
@@ -69,11 +60,12 @@
     <ClInclude Include="Include\Utils\StringID.h">
       <Filter>Include\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Include\Game\Game.h">
+      <Filter>Include\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Game\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Application\Application.cpp">
-      <Filter>Source\Application</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Core\JemPCH.cpp">
       <Filter>Source\Core</Filter>
     </ClCompile>
@@ -88,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="Source\Utils\StringID.cpp">
       <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Game.cpp">
+      <Filter>Source\Application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

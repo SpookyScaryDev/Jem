@@ -3,8 +3,6 @@
 #include "GameObject/Component.h"
 
 namespace Jem {
-
 	Component::Component() :
-		mID(SID("Default Component"))
-		{}
+		mID(SID("Default Component")) {}
 }

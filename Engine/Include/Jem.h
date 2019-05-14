@@ -3,7 +3,10 @@
 #include <Core/Core.h>
 
 // Application base class.
-#include <Application/Application.h>
+#include <Game/Game.h>
+
+// Game World
+#include <Game/World.h>
 
 // Logger macros / static Log.
 #include <Log/Log.h>
@@ -11,9 +14,6 @@
 
 // Utils
 #include <Utils/StringID.h>
-
-// GameObject
-#include <GameObject/GameObject.h>
 
 // Components
 #include <GameObject/Component.h>
