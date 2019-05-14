@@ -1,88 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Include">
-      <UniqueIdentifier>{6917EFFE-D5F6-6D9A-DE0E-F9704A6DD4FB}</UniqueIdentifier>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Include\Application">
-      <UniqueIdentifier>{ACB801B6-181A-DFC3-A187-25760DE81583}</UniqueIdentifier>
+    <Filter Include="Game">
+      <UniqueIdentifier>{7FA9857C-6BE0-860D-14CD-6C1000E3020F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Include\Core">
-      <UniqueIdentifier>{61455C4B-4DA8-EBEF-F62D-24A6E26FB772}</UniqueIdentifier>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{D652F52D-C20A-377B-2B12-10D717E9D16B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Include\GameObject">
-      <UniqueIdentifier>{49BE10D1-35A2-D126-9E02-CC798A05BCA8}</UniqueIdentifier>
+    <Filter Include="Log">
+      <UniqueIdentifier>{E704880B-530E-887C-DC89-9E7C4892937C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Include\Log">
-      <UniqueIdentifier>{BABB2986-2671-A27B-AF65-9C521B1A997F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Include\Utils">
-      <UniqueIdentifier>{89432DB8-F503-A9EE-BE3E-F26B2ABEEDCA}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source">
-      <UniqueIdentifier>{56EB95D1-428D-C0A7-2B48-D4FB178947F8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Application">
-      <UniqueIdentifier>{19D87881-05BC-39D7-6E1C-342A5A1F2459}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Core">
-      <UniqueIdentifier>{6E95150F-DA4A-8E04-633F-88DBCFF38408}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\GameObject">
-      <UniqueIdentifier>{16243BD7-823A-396D-CBB1-C48E37070AF5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Log">
-      <UniqueIdentifier>{27BEC236-1376-0484-7C7D-DDDF68549F74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Utils">
-      <UniqueIdentifier>{369510F3-22F8-9F97-CB7D-D84DB7BF6B1A}</UniqueIdentifier>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{F68B420E-62A0-6ABF-2B22-0E1F97F566F0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\Core\Core.h">
-      <Filter>Include\Core</Filter>
+    <ClInclude Include="Source\Core\Core.h">
+      <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Core\JemPCH.h">
-      <Filter>Include\Core</Filter>
+    <ClInclude Include="Source\Core\JemPCH.h">
+      <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Include\GameObject\Component.h">
-      <Filter>Include\GameObject</Filter>
+    <ClInclude Include="Source\Game\Game.h">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Include\GameObject\TransformComponent.h">
-      <Filter>Include\GameObject</Filter>
+    <ClInclude Include="Source\Game\World.h">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Jem.h">
-      <Filter>Include</Filter>
+    <ClInclude Include="Source\GameObject\Component.h">
+      <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Log\Log.h">
-      <Filter>Include\Log</Filter>
+    <ClInclude Include="Source\GameObject\TransformComponent.h">
+      <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Utils\StringID.h">
-      <Filter>Include\Utils</Filter>
+    <ClInclude Include="Source\Jem.h" />
+    <ClInclude Include="Source\Log\Log.h">
+      <Filter>Log</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Game\Game.h">
-      <Filter>Include\Application</Filter>
+    <ClInclude Include="Source\Utils\StringID.h">
+      <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Game\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\JemPCH.cpp">
-      <Filter>Source\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GameObject\Component.cpp">
-      <Filter>Source\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GameObject\TransformComponent.cpp">
-      <Filter>Source\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Log\Log.cpp">
-      <Filter>Source\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Utils\StringID.cpp">
-      <Filter>Source\Utils</Filter>
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\Game.cpp">
-      <Filter>Source\Application</Filter>
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject\Component.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject\TransformComponent.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Log\Log.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\StringID.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

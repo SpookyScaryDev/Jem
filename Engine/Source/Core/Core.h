@@ -5,7 +5,13 @@
 		#define JEM_API __declspec(dllexport)
 
 	#else
-		#define JEM_API __declspec(dllimport)
+		#ifdef JEM_LINK_DLL
+			#define JEM_API __declspec(dllimport)
+
+		#else	
+			#define JEM_API
+
+		#endif // JEM_LINK_DLL
 
 	#endif // JEM_DLL
 

@@ -3,9 +3,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
     
 project "Jem"
     location      "../"
-    kind          "SharedLib"
+    kind          "StaticLib"
     language      "C++"
-    staticruntime "off"
+    staticruntime "On"
 
     characterset  "MBCS"    --Only needed for my rubbish logging library.
                             --TODO: Replace my rubbish logging library!
@@ -17,23 +17,21 @@ project "Jem"
     pchsource "../Source/Core/JemPCH.cpp"
 
     files {
-        "../Include/**.h",
+        "../Source/**.h",
         "../Source/**.cpp"
     }
 
     includedirs {
-        "../Include/Core",    --Needed for pch.
-        "../Include"
+        "../Source/Core",    --Needed for pch.
+        "../Source"
     }
 
     filter "system:windows"
         cppdialect    "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines {
             "JEM_WINDOWS",
-            "JEM_DLL"
         }
 
     filter "configurations:Debug"

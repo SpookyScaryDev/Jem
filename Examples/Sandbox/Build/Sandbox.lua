@@ -5,7 +5,7 @@ project "Sandbox"
     location      "../"
     kind          "ConsoleApp"
     language      "C++"
-    staticruntime "off"
+    staticruntime "On"
 
     characterset  "MBCS"    --Only needed for my rubbish logging library.
                             --TODO: Replace my rubbish logging library!
@@ -19,7 +19,7 @@ project "Sandbox"
     }
 
     includedirs {
-        "../../../Engine/Include"
+        "../../../Engine/Source"
     }
 
     links {
@@ -33,19 +33,17 @@ project "Sandbox"
         defines {
             "JEM_WINDOWS"
         }
-        
-        prebuildcommands {
-            ("{COPY} \"../../Engine/Binaries/" .. outputdir .. "/Jem.dll\" %{cfg.targetdir}")
-        }
 
     filter "configurations:Debug"
         defines "JEM_DEBUG"
         runtime "Debug"
         symbols "On"    
+
     filter "configurations:Development"
         defines "JEM_DEVELOPMENT"
         runtime "Release"
         optimize "On"    
+
     filter "configurations:Ship"
         defines "JEM_SHIP"
         runtime "Release"
