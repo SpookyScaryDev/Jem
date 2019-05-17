@@ -4,7 +4,7 @@
 #include "stdint.h"
 
 // Returns a StringID object.
-#define SID(str) StringID{ Jem::HashFNV1a(str), str }
+#define SID(str) StringID( Jem::HashFNV1a(str), str )
 
 namespace Jem {
 	// Allows for string iteration at compile time.
@@ -19,16 +19,21 @@ namespace Jem {
 	}
 
 	// A struct containing a hashed string id and a pointer to its cstring.
-	struct JEM_API StringID {
-		StringID&           operator=(const StringID& s);
+	class JEM_API StringID {
+	public:
+		                   StringID( uint64_t id, const char * string );
+						   ~StringID();
 
-		const uint64_t      mID;
-		const char*         mStringPtr;
+		uint64_t           GetID();
+		const char*        GetString();
+
+		bool               operator==(const StringID& right);
+		bool               operator!=(const StringID& right);
+
+	private:
+		uint64_t           mID;
+		const char*        mStringPtr;
 	};
-
-	bool              operator==(const StringID& left, const StringID& right);
-	bool              operator!=(const StringID& left, const StringID& right);
-
 }
 
 // Returns an intiger string id at compile time for switch statements.

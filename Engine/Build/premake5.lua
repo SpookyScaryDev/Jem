@@ -1,6 +1,6 @@
 
 workspace "Jem"
-    location "../"
+    location "../../"
 
     architecture "x64"
     startproject "Sandbox"
@@ -11,7 +11,7 @@ workspace "Jem"
         "Ship"
     }
 
-include "../Engine/Build/Jem.lua"
+include "Jem/Jem.lua"
 
 group "Examples"
-include "../Examples/Sandbox/Build/Sandbox.lua"
+include "Sandbox/Sandbox.lua"

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <GameObject/Component.h>
-#include <GameObject/TransformComponent.h>
+#include <Component/Component.h>
+#include <Component/TransformComponent.h>
 #include <Utils/StringID.h>
 
 namespace Jem {

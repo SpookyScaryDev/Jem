@@ -1,8 +1,8 @@
 #include "JemPCH.h"
 
-#include "Game/Game.h"
+#include "Game.h"
 #include <Game/World.h>
-#include <GameObject/Component.h>
+#include <Component/Component.h>
 
 namespace Jem {
 	Game* Game::mGame = nullptr;
@@ -25,7 +25,7 @@ namespace Jem {
 
 	void Game::Run() {
 		JEM_CORE_MESSAGE("Running Application");
+		
 		std::cin.get();
 	}
-
 }

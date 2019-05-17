@@ -1,21 +1,27 @@
 #include "JemPCH.h"
 
-#include "Utils/StringID.h"
+#include "StringID.h"
 #include "stdint.h"
 
 namespace Jem {
-	StringID& StringID::operator=(const StringID& s) {
-		StringID mID = SID((char*)s.mStringPtr);
-		mStringPtr = s.mStringPtr;
+	StringID::StringID( uint64_t id, const char* string) :
+		mID(id), mStringPtr(string) {}
 
-		return *this;
+	StringID::~StringID() {}
+
+	uint64_t StringID::GetID() {
+		return mID;
 	}
 
-	bool operator==(const StringID& left, const StringID& right) {
-		return left.mID == right.mID;
+	const char* StringID::GetString() {
+		return mStringPtr;
 	}
 
-	bool operator!=(const StringID& left, const StringID& right) {
-		return left.mID != right.mID;
+	bool StringID::operator==(const StringID& right) {
+		return this->mID == right.mID;
+	}
+
+	bool StringID::operator!=(const StringID& right) {
+		return this->mID != right.mID;
 	}
 }

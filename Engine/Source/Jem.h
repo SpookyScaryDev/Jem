@@ -16,5 +16,5 @@
 #include <Utils/StringID.h>
 
 // Components
-#include <GameObject/Component.h>
-#include <GameObject/TransformComponent.h>
+#include <Component/Component.h>
+#include <Component/TransformComponent.h>

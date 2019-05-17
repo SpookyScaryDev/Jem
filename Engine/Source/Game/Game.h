@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <GameObject/Component.h>
+#include <Component/Component.h>
 #include <Game/World.h>
 #include <Utils/StringID.h>
 
