@@ -10,8 +10,9 @@ namespace Jem {
 	Game::Game() :
 		mWorld()
 	{
-		if (mGame != nullptr)
+		if (mGame != nullptr) {
 			JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
+		}
 
 		mGame = this;
 	}
