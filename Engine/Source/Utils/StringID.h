@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/Core.h"
-#include "stdint.h"
+#include <stdint.h>
 
 // Returns a StringID object.
 #define SID(str) StringID( Jem::HashFNV1a(str), str )
@@ -24,11 +24,11 @@ namespace Jem {
 		                   StringID( uint64_t id, const char * string );
 						   ~StringID();
 
-		uint64_t           GetID();
-		const char*        GetString();
+		uint64_t           GetID()       const;
+		const char*        GetString()   const;
 
-		bool               operator==(const StringID& right);
-		bool               operator!=(const StringID& right);
+		bool               operator==(const StringID& right)  const;
+		bool               operator!=(const StringID& right)  const;
 
 	private:
 		uint64_t           mID;

@@ -8,4 +8,7 @@ Examples/Sandbox/Binaries
 Examples/Sandbox/Intermediate
 
 # Files
+*.sln
+*.vcxproj
 *.user
+*.filters

@@ -1,7 +1,6 @@
 #include "JemPCH.h"
 
 #include "Log.h"
-
 #include "../Vendor/Logger/include/Logger/Logger.h"
 
 namespace Jem {
