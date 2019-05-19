@@ -2,6 +2,9 @@
 
 #include <Core/Core.h>
 
+// Entry point.
+#include <EntryPoint/EntryPoint.h>
+
 // Application base class.
 #include <Game/Game.h>
 
