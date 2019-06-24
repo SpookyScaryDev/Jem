@@ -8,9 +8,6 @@ project "Sandbox"
     language      "C++"
     staticruntime "On"
 
-    characterset  "MBCS"    --Only needed for my rubbish logging library.
-                            --TODO: Replace my rubbish logging library!
-
     targetdir (projectdir .. "Binaries/" .. outputdir)
     objdir    (projectdir .. "Intermediate/" .. outputdir)
 

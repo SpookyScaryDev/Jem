@@ -14,7 +14,5 @@ int main(int argc, char **argv) {
 	game->Run();
 	delete game;
 
-	Jem::Log::Shutdown();
-
 	return 0;
 }
