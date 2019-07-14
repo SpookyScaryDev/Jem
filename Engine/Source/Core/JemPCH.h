@@ -10,6 +10,7 @@
 #include <sstream>
 
 #include <Log/Log.h>
+#include <Core/Assert.h>
 
 #ifdef JEM_WINDOWS
 	#include <Windows.h>

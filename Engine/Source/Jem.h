@@ -1,6 +1,8 @@
 #pragma once
 
+// Core systems.
 #include <Core/Core.h>
+#include <Core/Assert.h>            // Assertion macros.
 
 // Entry point.
 #include <EntryPoint/EntryPoint.h>
