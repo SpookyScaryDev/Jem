@@ -1,8 +1,6 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <Component/Component.h>
-#include <Game/World.h>
 #include <Utils/StringID.h>
 
 namespace Jem {
@@ -16,8 +14,6 @@ namespace Jem {
 		void                Run();
 
 	private:
-		World               mWorld;
-
 		static Game*        mGame;
 	};
 }

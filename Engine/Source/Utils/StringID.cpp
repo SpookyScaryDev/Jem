@@ -7,8 +7,6 @@ namespace Jem {
 	StringID::StringID( uint64_t id, const char* string) :
 		mID(id), mStringPtr(string) {}
 
-	StringID::~StringID() {}
-
 	uint64_t StringID::GetID() const {
 		return mID;
 	}

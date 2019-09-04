@@ -1,15 +1,11 @@
 #include "JemPCH.h"
 
 #include "Game.h"
-#include <Game/World.h>
-#include <Component/Component.h>
 
 namespace Jem {
 	Game* Game::mGame = nullptr;
 
-	Game::Game() :
-		mWorld()
-	{
+	Game::Game() {
 		if (mGame != nullptr) {
 			JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
 		}

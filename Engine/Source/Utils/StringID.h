@@ -22,7 +22,7 @@ namespace Jem {
 	class JEM_API StringID {
 	public:
 		                   StringID( uint64_t id, const char * string );
-						   ~StringID();
+						   ~StringID() = default;
 
 		uint64_t           GetID()       const;
 		const char*        GetString()   const;
