@@ -1,17 +1,10 @@
 @echo off
 
-if not exist "%~dp0Engine\Build\GenerateProjectFiles.bat" (
-    goto Error_NoBatchFile
-)
-
-cd Engine\Build
-call GenerateProjectFiles.bat
+echo Building Jem Engine project files.
 echo.
-pause
-exit
 
-:Error_NoBatchFile
-echo Error: The 'GenerateProjectFiles.bat' file in 'Engine/Build' could not be found.
-echo.
+@echo on
+call premake5\premake5.exe vs2019
+@echo off
+
 pause
-exit

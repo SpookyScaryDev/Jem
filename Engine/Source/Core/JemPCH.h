@@ -9,7 +9,7 @@
 #include <string>
 #include <sstream>
 
-#include <Log/Log.h>
+#include <Core/Log/Log.h>
 #include <Core/Assert.h>
 
 #ifdef JEM_WINDOWS

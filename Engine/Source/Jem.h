@@ -5,10 +5,10 @@
 #include <Core/Assert.h>            // Assertion macros.
 
 // Entry point.
-#include <EntryPoint/EntryPoint.h>
+#include <Core/EntryPoint/EntryPoint.h>
 
 // Application base class.
-#include <Game/Game.h>
+#include <Core/Game/Game.h>
 
 // Entity-Component system.
 #include <ECS/EntityAdmin.h>
@@ -19,7 +19,7 @@
 #include <ECS/ComponentIterator.h>
 
 // Logger macros / static Log.
-#include <Log/Log.h>
+#include <Core/Log/Log.h>
 
 // Utils
-#include <Utils/StringID.h>
+#include <Core/StringID/StringID.h>

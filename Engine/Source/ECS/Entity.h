@@ -3,7 +3,7 @@
 #include <type_traits>
 
 #include <Core/Core.h>
-#include <Utils/StringID.h>
+#include <Core/StringID/StringID.h>
 #include <ECS/Component.h>
 #include <ECS/ComponentPool.h>
 #include <map>
