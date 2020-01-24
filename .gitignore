@@ -4,8 +4,10 @@
 Engine/Binaries
 Engine/Intermediate
 
-Examples/Sandbox/Binaries
-Examples/Sandbox/Intermediate
+Sandbox/Binaries
+Sandbox/Intermediate
+
+premake5/
 
 # Files
 *.sln
