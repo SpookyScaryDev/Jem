@@ -1,6 +1,9 @@
 
 projectdir = ""
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+include "Vendor/SDL2/SDL2.lua"
+include "Vendor/SDL2/SDL2main.lua"
     
 project "Jem"
     location      (projectdir)
@@ -14,12 +17,18 @@ project "Jem"
     pchheader "JemPCH.h"
     pchsource (projectdir .. "Source/Core/JemPCH.cpp")
 
+	links {
+		"SDL2",
+		"SDL2main"
+	}
+
     files {
         projectdir .. "Source/**.h",
         projectdir .. "Source/**.cpp"
     }
 
     includedirs {
+		"Vendor/SDL2/include",
         projectdir .. "Source/Core",    --Needed for pch.
         projectdir .. "Source"
     }

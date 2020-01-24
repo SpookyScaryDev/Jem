@@ -1,3 +1,6 @@
 [submodule "Engine/Vendor/Logger"]
 	path = Engine/Vendor/Logger
 	url = https://github.com/SpookyScaryStudios/Logger
+[submodule "Engine/Vendor/SDL2"]
+	path = Engine/Vendor/SDL2
+	url = https://github.com/SpookyScaryStudios/SDL2
