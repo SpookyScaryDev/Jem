@@ -24,6 +24,10 @@ project "Sandbox"
         "Jem"
     }
 
+	prebuildcommands {
+		"{COPY} ../Engine/Vendor/SDL2/Binaries/" ..outputdir.. "/SDL2.dll %{cfg.targetdir}"
+	}
+
     filter "system:windows"
         cppdialect "C++17"
         systemversion "latest"

@@ -7,10 +7,8 @@ Engine/Intermediate
 Sandbox/Binaries
 Sandbox/Intermediate
 
-premake5/
-
 # Files
-*.sln
-*.vcxproj
-*.user
-*.filters
+**.sln
+**.vcxproj
+**.user
+**.filters
