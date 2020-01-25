@@ -2,19 +2,33 @@
 
 #include "Game.h"
 
+#include <Core/Window/Window.h>
+#include <SDL.h>
+
 namespace Jem {
 	Game* Game::mGame = nullptr;
 
-	Game::Game() {
+	Game::Game(const char* name, int width, int height) {
 		if (mGame != nullptr) {
 			JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
 		}
 
+		// TODO: move to init function.
+		JEM_CORE_MESSAGE("************************************************************");
+		JEM_CORE_MESSAGE("Initializing Jem:");
+		JEM_CORE_MESSAGE("************************************************************");
+		JEM_CORE_MESSAGE("Initializing SDL2");
+		SDL_Init(SDL_INIT_EVERYTHING);
+
 		mGame = this;
+		JEM_CORE_MESSAGE("Creating Window");
+		mWindow = new Window(name, width, height);
+		JEM_CORE_MESSAGE("************************************************************");
 	}
 	
 	Game::~Game() {
 		mGame = nullptr;
+		delete mWindow;
 	}
 
 	Game* Game::GetGame(){
