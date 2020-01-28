@@ -6,12 +6,15 @@
 
 
 namespace Jem {
-	Window::Window(const char* name, int width, int height) :
-		mWidth(width),
-		mHeight(height)
-	
-	{
-		mWindow = SDL_CreateWindow(name,
+	SDL_Window* window;
+	int         windowWidth;
+	int         windowHeight;
+
+	void InitWindow(const char* name, int width, int height) {
+		windowWidth = width;
+		windowHeight = height;
+
+		window = SDL_CreateWindow(name,
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			width,
@@ -19,15 +22,15 @@ namespace Jem {
 			SDL_WINDOW_SHOWN);
 	}
 
-	Window::~Window() {
-		SDL_DestroyWindow(mWindow);
+	void DestroyWindow() {
+		SDL_DestroyWindow(window);
 	}
 
-	int Window::GetWidth() const {
-		return mWidth;
+	int GetWindowWidth() {
+		return windowWidth;
 	}
 
-	int Window::GetHeight() const {
-		return mHeight;
+	int GetWindowHeight() {
+		return windowHeight;
 	}
 }

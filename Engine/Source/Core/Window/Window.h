@@ -1,21 +1,9 @@
 #pragma once
 
-#include <Core/Core.h>
-
-struct SDL_Window;
-
 namespace Jem {
-	class JEM_API Window {
-	public:
-		                    Window(const char* name, int width, int height);
-		                    ~Window();
+	void                InitWindow(const char* name, int width, int height);
+	void                DestroyWindow();
 
-		int                 GetWidth()  const;
-		int                 GetHeight() const;
-
-	private:
-		SDL_Window*         mWindow;
-		int                 mWidth;
-		int                 mHeight;
-	};
+	int                 GetWindowWidth();
+	int                 GetWindowHeight();
 }

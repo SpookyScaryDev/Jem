@@ -22,13 +22,12 @@ namespace Jem {
 
 		mGame = this;
 		JEM_CORE_MESSAGE("Creating Window");
-		mWindow = new Window(name, width, height);
+		InitWindow(name, width, height);
 		JEM_CORE_MESSAGE("************************************************************");
 	}
 	
 	Game::~Game() {
 		mGame = nullptr;
-		delete mWindow;
 	}
 
 	Game* Game::GetGame(){

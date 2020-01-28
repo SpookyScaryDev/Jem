@@ -18,6 +18,5 @@ namespace Jem {
 
 	private:
 		static Game*        mGame;
-		Window*             mWindow;
 	};
 }
