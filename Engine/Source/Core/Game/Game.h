@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Core/Core.h>
 #include <Core/StringID/StringID.h>
 #include <Core/Window/Window.h>
 

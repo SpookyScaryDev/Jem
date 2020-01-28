@@ -2,7 +2,6 @@
 
 #include <type_traits>
 
-#include <Core/Core.h>
 #include <ECS/Entity.h>
 #include <ECS/Component.h>
 #include <ECS/System.h>

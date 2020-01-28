@@ -4,11 +4,13 @@
 #include "../Vendor/Logger/Include/LittleLogger.h"
 
 namespace Jem {
-	std::shared_ptr<lilo::Logger> Log::CoreLogger;
-	std::shared_ptr<lilo::Logger> Log::ClientLogger;
+	namespace Log {
+		std::shared_ptr<lilo::Logger> CoreLogger;
+		std::shared_ptr<lilo::Logger> ClientLogger;
 
-	void Log::Init() {
-		CoreLogger = lilo::CreateColourLogger(lilo::LOG_MESSAGE);
-		ClientLogger = lilo::CreateColourLogger(lilo::LOG_MESSAGE);
+		void Init() {
+			CoreLogger = lilo::CreateColourLogger(lilo::LOG_MESSAGE);
+			ClientLogger = lilo::CreateColourLogger(lilo::LOG_MESSAGE);
+		}
 	}
 }

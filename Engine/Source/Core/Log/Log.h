@@ -1,17 +1,15 @@
 #pragma once
 
-#include <Core/Core.h>
 #include "../Vendor/Logger/Include/LittleLogger.h"
 #include <memory>
 
 namespace Jem {
-	class Log {
-	public:
-		static void                          Init();
+	namespace Log {
+		void                                 Init();
 
-		static std::shared_ptr<lilo::Logger> CoreLogger;
-		static std::shared_ptr<lilo::Logger> ClientLogger;
-	};
+		extern std::shared_ptr<lilo::Logger> CoreLogger;
+		extern std::shared_ptr<lilo::Logger> ClientLogger;
+	}
 }
 
 // Core log macros.

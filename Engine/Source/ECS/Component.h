@@ -2,8 +2,6 @@
 
 #include <type_traits>
 
-#include <Core/Core.h>
-
 namespace Jem {
 	// Base Component class: stores data and accessors for Entities.
 	class Component {

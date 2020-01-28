@@ -2,7 +2,6 @@
 
 #include <type_traits>
 
-#include <Core/Core.h>
 #include <ECS/Component.h>
 #include <vector>
 

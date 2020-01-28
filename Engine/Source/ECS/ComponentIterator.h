@@ -1,8 +1,6 @@
 #pragma once
 
 #include <type_traits>
-
-#include <Core/Core.h>
 #include <ECS/EntityAdmin.h>
 #include <vector>
 #include <iterator>
