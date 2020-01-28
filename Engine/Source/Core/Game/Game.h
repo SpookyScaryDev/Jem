@@ -6,7 +6,7 @@
 
 namespace Jem {
 	// A base app class.
-	class JEM_API Game {
+	class Game {
 	public:
 		                    Game(const char* name = "Jem 2D Game Engine : Better Than ID Tech 7!",
 								int width = 500,

@@ -10,7 +10,7 @@
 
 namespace Jem {
 	// Maintains all Entities, Components and systems.
-	class JEM_API EntityAdmin {
+	class EntityAdmin {
 	public:
 		                         EntityAdmin()  = default;
 		                         ~EntityAdmin();

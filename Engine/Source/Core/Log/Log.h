@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace Jem {
-	class JEM_API Log {
+	class Log {
 	public:
 		static void                          Init();
 

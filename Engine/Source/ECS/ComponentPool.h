@@ -10,7 +10,7 @@ namespace Jem {
 	// A data structure to store Component objects.
 	// A vector is created for each Component type. These vectors are stored in another vector indexed through
 	// Component::GetIndex.
-	class JEM_API ComponentPool {
+	class ComponentPool {
 	public:
 		                                      ComponentPool()  = default;
 		                                      ~ComponentPool();

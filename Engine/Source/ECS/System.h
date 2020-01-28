@@ -6,7 +6,7 @@ namespace Jem {
 	class EntityAdmin;
 
 	// A System which stores behavior to be performed on Components.
-	class JEM_API System {
+	class System {
 	public:
 		                      System(EntityAdmin* admin);
 		virtual               ~System() = default;

@@ -19,7 +19,7 @@ namespace Jem {
 	}
 
 	// A struct containing a hashed string id and a pointer to its cstring.
-	class JEM_API StringID {
+	class StringID {
 	public:
 		                   StringID( uint64_t id, const char * string );
 						   ~StringID() = default;

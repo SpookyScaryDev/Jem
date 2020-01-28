@@ -6,7 +6,7 @@
 
 namespace Jem {
 	// Base Component class: stores data and accessors for Entities.
-	class JEM_API Component {
+	class Component {
 	public:
 		                      Component()  = default;
 		virtual               ~Component() = default;

@@ -10,7 +10,7 @@
 namespace Jem {
 	// Iterates through all components of ComponentArg type.
 	template <class ComponentArg>
-	class JEM_API ComponentIterator {
+	class ComponentIterator {
 	public:
 		ComponentIterator(EntityAdmin* admin) :
 			mComponentVector(admin->GetComponents<ComponentArg>())

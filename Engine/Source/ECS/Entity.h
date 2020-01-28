@@ -10,7 +10,7 @@
 
 namespace Jem {
 	// An Entity interface which stores pointers to its components.
-	class JEM_API Entity {
+	class Entity {
 	public:
 		                         Entity(StringID id, ComponentPool* componentPool);
 		virtual                  ~Entity();
