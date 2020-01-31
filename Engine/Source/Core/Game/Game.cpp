@@ -13,17 +13,9 @@ namespace Jem {
 			JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
 		}
 
-		// TODO: move to init function.
-		JEM_CORE_MESSAGE("************************************************************");
-		JEM_CORE_MESSAGE("Initializing Jem:");
-		JEM_CORE_MESSAGE("************************************************************");
-		JEM_CORE_MESSAGE("Initializing SDL2");
-		SDL_Init(SDL_INIT_EVERYTHING);
-
 		mGame = this;
-		JEM_CORE_MESSAGE("Creating Window");
-		InitWindow(name, width, height);
-		JEM_CORE_MESSAGE("************************************************************");
+
+		Init(name, width, height);
 	}
 	
 	Game::~Game() {
@@ -32,6 +24,23 @@ namespace Jem {
 
 	Game* Game::GetGame(){
 		return mGame;
+	}
+
+	void Game::Init(const char* name, int width, int height) {
+		Jem::Log::Init();
+
+		JEM_CORE_MESSAGE("************************************************************");
+		JEM_CORE_MESSAGE("Initializing Jem:");
+		JEM_CORE_MESSAGE("************************************************************");
+		JEM_CORE_MESSAGE("Game::Init: Initializing Subsystems");
+
+		JEM_CORE_MESSAGE("SDL_Init: Initializing SDL2");
+		SDL_Init(SDL_INIT_EVERYTHING);
+
+		JEM_CORE_MESSAGE("InitWindow: Creating Window");
+		InitWindow(name, width, height);
+
+		JEM_CORE_MESSAGE("************************************************************");
 	}
 
 	void Game::Run() {

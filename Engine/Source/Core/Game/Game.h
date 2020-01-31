@@ -16,6 +16,8 @@ namespace Jem {
 		void                Run();
 
 	private:
+		void                Init(const char* name, int width, int height);
+
 		static Game*        mGame;
 	};
 }
