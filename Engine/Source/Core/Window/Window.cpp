@@ -20,6 +20,11 @@ namespace Jem {
 			width,
 			height,
 			SDL_WINDOW_SHOWN);
+
+		if (window == NULL) {
+			// The window could not be created.
+			JEM_CORE_ERROR("InitWindow: Failed to create window - ", SDL_GetError());
+		}
 	}
 
 	void DestroyWindow() {
