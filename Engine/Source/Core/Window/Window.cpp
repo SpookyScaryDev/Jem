@@ -6,7 +6,7 @@
 
 
 namespace Jem {
-	SDL_Window* window;
+	SDL_Window* rawSDLWindow;
 	int         windowWidth;
 	int         windowHeight;
 
@@ -14,21 +14,21 @@ namespace Jem {
 		windowWidth = width;
 		windowHeight = height;
 
-		window = SDL_CreateWindow(name,
+		rawSDLWindow = SDL_CreateWindow(name,
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			width,
 			height,
 			SDL_WINDOW_SHOWN);
 
-		if (window == NULL) {
+		if (rawSDLWindow == NULL) {
 			// The window could not be created.
 			JEM_CORE_ERROR("InitWindow: Failed to create window - ", SDL_GetError());
 		}
 	}
 
 	void DestroyWindow() {
-		SDL_DestroyWindow(window);
+		SDL_DestroyWindow(rawSDLWindow);
 	}
 
 	int GetWindowWidth() {
