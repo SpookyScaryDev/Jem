@@ -10,6 +10,9 @@
 // Application base class.
 #include <Core/Game/Game.h>
 
+// Renderer
+#include <Renderer/Renderer.h>
+
 // Entity-Component system.
 #include <ECS/EntityAdmin.h>
 

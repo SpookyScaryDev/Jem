@@ -21,7 +21,7 @@ namespace Jem {
 			height,
 			SDL_WINDOW_SHOWN);
 
-		if (rawSDLWindow == NULL) {
+		if (rawSDLWindow == nullptr) {
 			// The window could not be created.
 			JEM_CORE_ERROR("InitWindow: Failed to create window - ", SDL_GetError());
 		}
