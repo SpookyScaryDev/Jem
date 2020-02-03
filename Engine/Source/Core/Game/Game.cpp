@@ -21,6 +21,7 @@ namespace Jem {
 	}
 
 	Game::~Game() {
+		Shutdown();
 		mGame = nullptr;
 	}
 
@@ -49,6 +50,13 @@ namespace Jem {
 		Input::Init();
 
 		JEM_CORE_MESSAGE("************************************************************");
+	}
+
+	void Game::Shutdown() {  // Shutdown subsystems in reverse order.
+		Input::Destroy();
+		Renderer::Shutdown();
+		DestroyWindow();
+		SDL_Quit();
 	}
 
 	void Game::Run() {

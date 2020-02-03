@@ -17,6 +17,7 @@ namespace Jem {
 
 	private:
 		void                Init(const char* name, int width, int height);
+		void                Shutdown();
 
 		static Game*        mGame;
 	};
