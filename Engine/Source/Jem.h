@@ -13,6 +13,10 @@
 // Renderer
 #include <Renderer/Renderer.h>
 
+// Input
+#include <Core/Input/Input.h>
+#include <Core/Input/KeyCodes.h>
+
 // Entity-Component system.
 #include <ECS/EntityAdmin.h>
 
