@@ -6,6 +6,7 @@
 #include <Renderer/Renderer.h>
 #include <SDL.h>
 #include <Core/Input/Input.h>
+#include <chrono>
 
 namespace Jem {
 	Game* Game::mGame = nullptr;
@@ -60,27 +61,20 @@ namespace Jem {
 	}
 
 	void Game::Run() {
-		JEM_CORE_MESSAGE("Running Application");
-
-		// Renderer Test - pure evil!
-		int r = 0;
-		int g = 0;
-		int b = 0;
+		JEM_CORE_MESSAGE("Running Application"); // TODO: Fix the input / rendering stuff in here.
+		
+		std::chrono::system_clock::time_point previousTime = std::chrono::system_clock::now();
 		while (true) {
-			Input::Update();
-			if (Input::IsKeyPressed(JEM_KEY_SPACE)) {
-				JEM_CORE_WARNING("Space Key Pressed");
+			std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
+			std::chrono::duration<double> elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime);
+			previousTime = currentTime;
 
-				r = (rand() % 255) + 1;
-				g = (rand() % 255) + 1;
-				b = (rand() % 255) + 1;
-			}
-			Renderer::SetClearColour(r, g, b);
+			Input::Update();
+
+			Update(elapsed.count());
 
 			Renderer::Clear();
 			Renderer::Refreash();
-		}
-
-		std::cin.get();
+		};
 	}
 }

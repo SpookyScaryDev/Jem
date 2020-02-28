@@ -15,6 +15,9 @@ namespace Jem {
 		static Game*        GetGame();
 		void                Run();
 
+	protected:
+		virtual void        Update(double deltaTime) {}; // TODO: This might be bad...
+
 	private:
 		void                Init(const char* name, int width, int height);
 		void                Shutdown();
