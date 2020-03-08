@@ -18,14 +18,6 @@
 #include <Core/Input/KeyCodes.h>
 #include <Core/Input/MouseCodes.h>
 
-// Entity-Component system.
-#include <ECS/EntityAdmin.h>
-
-#include <ECS/Entity.h>
-#include <ECS/Component.h>
-#include <ECS/System.h>
-#include <ECS/ComponentIterator.h>
-
 // Logger macros / static Log.
 #include <Core/Log/Log.h>
 
