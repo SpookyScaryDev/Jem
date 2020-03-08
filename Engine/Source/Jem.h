@@ -16,6 +16,7 @@
 // Input
 #include <Core/Input/Input.h>
 #include <Core/Input/KeyCodes.h>
+#include <Core/Input/MouseCodes.h>
 
 // Entity-Component system.
 #include <ECS/EntityAdmin.h>

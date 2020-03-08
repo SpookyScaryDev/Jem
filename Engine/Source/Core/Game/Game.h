@@ -22,6 +22,8 @@ namespace Jem {
 		void                Init(const char* name, int width, int height);
 		void                Shutdown();
 
+		bool                mIsRunning = true;
+
 		static Game*        mGame;
 	};
 }

@@ -54,27 +54,29 @@ namespace Jem {
 	}
 
 	void Game::Shutdown() {  // Shutdown subsystems in reverse order.
-		Input::Destroy();
+		Input::Destroy();      // TODO: naming conventions!
 		Renderer::Shutdown();
 		DestroyWindow();
 		SDL_Quit();
 	}
 
 	void Game::Run() {
-		JEM_CORE_MESSAGE("Running Application"); // TODO: Fix the input / rendering stuff in here.
-		
-		std::chrono::system_clock::time_point previousTime = std::chrono::system_clock::now();
-		while (true) {
-			std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
-			std::chrono::duration<double> elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime);
-			previousTime = currentTime;
+		while (mIsRunning) {
+			JEM_CORE_MESSAGE("Running Application"); // TODO: Fix the input / rendering stuff in here.
 
-			Input::Update();
+			std::chrono::system_clock::time_point previousTime = std::chrono::system_clock::now();
+			while (mIsRunning) {
+				std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
+				std::chrono::duration<double> elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime);
+				previousTime = currentTime;
 
-			Update(elapsed.count());
+				mIsRunning = Input::Update();
 
-			Renderer::Clear();
-			Renderer::Refreash();
-		};
+				Update(elapsed.count());
+
+				Renderer::Clear();
+				Renderer::Refreash();
+			};
+		}
 	}
 }

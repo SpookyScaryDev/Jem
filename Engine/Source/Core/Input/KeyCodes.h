@@ -3,7 +3,7 @@
 // Copied from SDL_Scancode.h
 
 namespace Jem {
-	enum KeyCode {
+	enum class KeyCode {
 	    JEM_KEY_UNKNOWN = 0,
 	
 	    /**
