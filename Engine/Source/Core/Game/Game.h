@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Core/StringID/StringID.h>
 #include <Core/Window/Window.h>
 
 namespace Jem {
