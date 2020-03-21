@@ -2,11 +2,18 @@
 
 // From SDL_mouse.h
 namespace Jem {
-	enum class MouseCode {
-		JEM_BUTTON_LEFT   = 1,
-		JEM_BUTTON_MIDDLE = 2,
-		JEM_BUTTON_RIGHT  = 3,
-		JEM_BUTTON_X1     = 4,
-		JEM_BUTTON_X2     = 5
-	};
+
+// ===============================================================================
+//
+//     Codes for mouse button clicks.
+//
+// ===============================================================================
+enum class MouseCode {
+    BUTTON_LEFT    = 1,
+    BUTTON_MIDDLE  = 2,
+    BUTTON_RIGHT   = 3,
+    BUTTON_X1      = 4,
+    BUTTON_X2      = 5
+};
+
 }

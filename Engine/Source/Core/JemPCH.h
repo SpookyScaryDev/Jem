@@ -12,8 +12,3 @@
 #include <Core/Core.h>
 #include <Core/Log/Log.h>
 #include <Core/Assert.h>
-
-#ifdef JEM_WINDOWS
-	#include <Windows.h>
-
-#endif // JEM_WINDOWS

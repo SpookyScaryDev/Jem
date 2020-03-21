@@ -6,36 +6,53 @@
 
 
 namespace Jem {
-	SDL_Window* rawSDLWindow;
-	int         windowWidth;
-	int         windowHeight;
 
-	void InitWindow(const char* name, int width, int height) {
-		windowWidth = width;
-		windowHeight = height;
+namespace Window {
+    SDL_Window* rawSDLWindow;
+    int         windowWidth;
+    int         windowHeight;
 
-		rawSDLWindow = SDL_CreateWindow(name,
-			SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED,
-			width,
-			height,
-			SDL_WINDOW_SHOWN);
+    // ==================
+    // Jem::Window::Init
+    // ==================
+    void Init(const char* name, int width, int height) {
+        windowWidth = width;
+        windowHeight = height;
 
-		if (rawSDLWindow == nullptr) {
-			// The window could not be created.
-			JEM_CORE_ERROR("InitWindow: Failed to create window - ", SDL_GetError());
-		}
-	}
+        rawSDLWindow = SDL_CreateWindow(name,
+            SDL_WINDOWPOS_UNDEFINED,
+            SDL_WINDOWPOS_UNDEFINED,
+            width,
+            height,
+            SDL_WINDOW_SHOWN
+        );
 
-	void DestroyWindow() {
-		SDL_DestroyWindow(rawSDLWindow);
-	}
+        if (rawSDLWindow == nullptr) {
+            // The window could not be created.
+            JEM_CORE_ERROR("InitWindow: Failed to create window - ", SDL_GetError());
+        }
+    }
 
-	int GetWindowWidth() {
-		return windowWidth;
-	}
+    // ==================
+    // Jem::Window::Destroy
+    // ==================
+    void Destroy() {
+        SDL_DestroyWindow(rawSDLWindow);
+    }
 
-	int GetWindowHeight() {
-		return windowHeight;
-	}
+    // ==================
+    // Jem::Window::GetWidth
+    // ==================
+    int GetWidth() {
+        return windowWidth;
+    }
+
+    // ==================
+    // Jem::Window::GetHeight
+    // ==================
+    int GetHeight() {
+        return windowHeight;
+    }
+}
+
 }

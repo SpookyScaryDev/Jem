@@ -3,11 +3,15 @@
 struct SDL_Window;
 
 namespace Jem {
-	void                InitWindow(const char* name, int width, int height);
-	void                DestroyWindow();
 
-	int                 GetWindowWidth();
-	int                 GetWindowHeight();
+namespace Window {
+    void                Init(const char* name, int width, int height);
+    void                Destroy();
 
-	extern SDL_Window*  rawSDLWindow; // TODO: Getter?
+    int                 GetWidth();
+    int                 GetHeight();
+
+    extern SDL_Window*  rawSDLWindow;
+}
+
 }

@@ -8,41 +8,62 @@
 #include <Core/Input/MouseCodes.h>
 
 namespace Jem {
-	namespace Input {
-		const Uint8* keyboardState;
-		Uint8        mouseState;
 
-		int mouseXPosition; // TODO: Replace with a vector maybe.
-		int mouseYPosition;
+namespace Input {
+    const Uint8* keyboardState;
+    Uint8        mouseState;
+    int          mouseXPosition; // TODO: Replace with a vector maybe.
+    int          mouseYPosition;
 
-		void Init() {
-			keyboardState = SDL_GetKeyboardState(nullptr);
-		}
+    // ==================
+    // Jem::Input::Init
+    // ==================
+    void Init() {
+        keyboardState = SDL_GetKeyboardState(nullptr);
+    }
 
-		void Destroy() {}
+    // ==================
+    // Jem::Input::Shutdown
+    // ==================
+    void Shutdown() {
+        keyboardState = nullptr;
+    }
 
-		bool Update() {
-			SDL_Event event;
-			while ((SDL_PollEvent(&event)) != 0) { // TODO: Add mouse scrolling maybe.
-				if (event.type == SDL_QUIT) {
-					return false;
-				}
-			}
-			mouseState = SDL_GetMouseState(&mouseXPosition, &mouseYPosition);
+    // ==================
+    // Jem::Input::Update
+    // ==================
+    bool Update() {
+        SDL_Event event;
+        while ((SDL_PollEvent(&event)) != 0) { // TODO: Add mouse scrolling maybe.
+            if (event.type == SDL_QUIT) {
+                return false;
+            }
+        }
+        mouseState = SDL_GetMouseState(&mouseXPosition, &mouseYPosition);
 
-			return true;
-		}
+        return true;
+    }
 
-		bool IsKeyPressed(KeyCode key) {
-			return keyboardState[static_cast<Uint8>(key)];
-		}
+    // ==================
+    // Jem::Input::IsKeyPressed
+    // ==================
+    bool IsKeyPressed(KeyCode key) {
+        return keyboardState[static_cast<Uint8>(key)];
+    }
 
-		bool IsMouseButtonPressed(MouseCode button) {
-			return mouseState & SDL_BUTTON(static_cast<int>(button));
-		}
+    // ==================
+    // Jem::Input::IsMouseButtonPressed
+    // ==================
+    bool IsMouseButtonPressed(MouseCode button) {
+        return mouseState & SDL_BUTTON(static_cast<int>(button));
+    }
 
-		std::pair<int, int> GetMousePosition() {
-			return std::make_pair(mouseXPosition, mouseYPosition);
-		}
-	}
+    // ==================
+    // Jem::Input::GetMousePosition
+    // ==================
+    std::pair<int, int> GetMousePosition() {
+        return std::make_pair(mouseXPosition, mouseYPosition);
+    }
+}
+
 }

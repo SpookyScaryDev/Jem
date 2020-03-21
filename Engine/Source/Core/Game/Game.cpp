@@ -9,74 +9,99 @@
 #include <chrono>
 
 namespace Jem {
-	Game* Game::mGame = nullptr;
 
-	Game::Game(const char* name, int width, int height) {
-		if (mGame != nullptr) {
-			JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
-		}
+Game* Game::mGame = nullptr;
 
-		mGame = this;
+// ==================
+// Jem::Game::Game
+// ==================
+Game::Game(const char* name, int width, int height) {
+    // Initialize singleton.
+    if (mGame != nullptr) {
+        JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
+    }
+    mGame = this;
 
-		Init(name, width, height);
-	}
+    Init(name, width, height);
+}
 
-	Game::~Game() {
-		Shutdown();
-		mGame = nullptr;
-	}
+// ==================
+// Jem::Game::~Game
+// ==================
+Game::~Game() {
+    Shutdown();
+    mGame = nullptr;
+}
 
-	Game* Game::GetGame() {
-		return mGame;
-	}
+// ==================
+// Jem::Game::GetGame
+// ==================
+Game* Game::GetGame() {
+    return mGame;
+}
 
-	void Game::Init(const char* name, int width, int height) {
-		Jem::Log::Init();
+// ==================
+// Jem::Game::Init
+// ==================
+void Game::Init(const char* name, int width, int height) const{
+    Jem::Log::Init();
 
-		JEM_CORE_MESSAGE("************************************************************");
-		JEM_CORE_MESSAGE("Initializing Jem:");
-		JEM_CORE_MESSAGE("************************************************************");
-		JEM_CORE_MESSAGE("Game::Init: Initializing Subsystems");
+    JEM_CORE_MESSAGE("************************************************************");
+    JEM_CORE_MESSAGE("Initializing Jem:");
+    JEM_CORE_MESSAGE("************************************************************");
+    JEM_CORE_MESSAGE("Game::Init: Initializing Subsystems");
 
-		JEM_CORE_MESSAGE("SDL_Init: Initializing SDL2");
-		SDL_Init(SDL_INIT_EVERYTHING);
+    JEM_CORE_MESSAGE("SDL_Init: Initializing SDL2");
+    SDL_Init(SDL_INIT_EVERYTHING);
 
-		JEM_CORE_MESSAGE("InitWindow: Creating Window");
-		InitWindow(name, width, height);
+    JEM_CORE_MESSAGE("InitWindow: Creating Window");
+    Window::Init(name, width, height);
 
-		JEM_CORE_MESSAGE("Renderer::Init: Initializing Renderer");
-		Renderer::Init();
+    JEM_CORE_MESSAGE("Renderer::Init: Initializing Renderer");
+    Renderer::Init();
 
-		JEM_CORE_MESSAGE("Input::Init: Initializing Input");
-		Input::Init();
+    JEM_CORE_MESSAGE("Input::Init: Initializing Input");
+    Input::Init();
 
-		JEM_CORE_MESSAGE("************************************************************");
-	}
+    JEM_CORE_MESSAGE("************************************************************");
+}
 
-	void Game::Shutdown() {  // Shutdown subsystems in reverse order.
-		Input::Destroy();      // TODO: naming conventions!
-		Renderer::Shutdown();
-		DestroyWindow();
-		SDL_Quit();
-	}
+// ==================
+// Jem::Game::Shutdown
+// ==================
+void Game::Shutdown() const{
+    Input::Shutdown();
+    Renderer::Shutdown();
+    Window::Destroy();
+    SDL_Quit();
+}
 
-	void Game::Run() {
-		while (mIsRunning) {
-			JEM_CORE_MESSAGE("Running Application"); // TODO: Fix the input / rendering stuff in here.
+// ==================
+// Jem::Game::Run
+// ==================
+void Game::Run() {
+    while (mIsRunning) {
+        JEM_CORE_MESSAGE("Running Application");
 
-			std::chrono::system_clock::time_point previousTime = std::chrono::system_clock::now();
-			while (mIsRunning) {
-				std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
-				std::chrono::duration<double> elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime);
-				previousTime = currentTime;
+        // Get time.
+        std::chrono::system_clock::time_point previousTime = std::chrono::system_clock::now();
+        while (mIsRunning) {
+            // Calculate elapsed time.
+            std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
+            std::chrono::duration<double> elapsed = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - previousTime);
+            previousTime = currentTime;
 
-				mIsRunning = Input::Update();
+            // Update input manager.
+            mIsRunning = Input::Update(); // TODO: Add event system.
 
-				Update(elapsed.count());
+            // Update using delta time.
+            Update(elapsed.count());
 
-				Renderer::Clear();
-				Renderer::Refreash();
-			};
-		}
-	}
+            // Refresh Renderer.
+            Renderer::Clear();
+            Renderer::Refresh();
+        };
+    }
+}
+
 }
