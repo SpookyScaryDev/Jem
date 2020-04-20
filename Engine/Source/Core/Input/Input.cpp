@@ -7,6 +7,11 @@
 #include <Core/Input/KeyCodes.h>
 #include <Core/Input/MouseCodes.h>
 
+#include <Core/Event/EventDispatcher.h>
+#include <Core/Event/WindowEvent.h>
+#include <Core/Event/KeyEvent.h>
+#include <Core/Event/MouseEvent.h>
+
 namespace Jem {
 
 namespace Input {
@@ -32,16 +37,40 @@ namespace Input {
     // ==================
     // Jem::Input::Update
     // ==================
-    bool Update() {
+    void Update() {
         SDL_Event event;
-        while ((SDL_PollEvent(&event)) != 0) { // TODO: Add mouse scrolling maybe.
-            if (event.type == SDL_QUIT) {
-                return false;
+        while ((SDL_PollEvent(&event)) != 0) { // TODO: Add mouse scrolling maybe. Also get rid of the news.
+            switch (event.type) {
+                case SDL_QUIT:
+                    EventDispatcher::DispatchEvent(new WindowCloseEvent());
+                    break;
+
+                case SDL_KEYDOWN:
+                    EventDispatcher::DispatchEvent(new KeyPressedEvent((KeyCode)event.key.keysym.scancode));
+                    break;
+
+                case SDL_KEYUP:
+                    EventDispatcher::DispatchEvent(new KeyReleasedEvent((KeyCode)event.key.keysym.scancode));
+                    break;
+
+                case SDL_MOUSEMOTION:
+                    EventDispatcher::DispatchEvent(new MouseMovedEvent(event.motion.x, event.motion.y));
+                    break;
+
+                case SDL_MOUSEBUTTONDOWN:
+                    EventDispatcher::DispatchEvent(new MouseButtonPressedEvent((MouseCode)event.button.button));
+                    break;
+
+                case SDL_MOUSEBUTTONUP:
+                    EventDispatcher::DispatchEvent(new MouseButtonReleasedEvent((MouseCode)event.button.button));
+                    break;
+
+                case SDL_MOUSEWHEEL:
+                    EventDispatcher::DispatchEvent(new MouseScrolledEvent(event.wheel.x, event.wheel.y));
+                    break;
             }
         }
         mouseState = SDL_GetMouseState(&mouseXPosition, &mouseYPosition);
-
-        return true;
     }
 
     // ==================

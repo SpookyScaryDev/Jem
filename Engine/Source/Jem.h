@@ -18,5 +18,11 @@
 #include <Core/Input/KeyCodes.h>
 #include <Core/Input/MouseCodes.h>
 
+// Events
+#include <Core/Event/EventDispatcher.h>
+#include <Core/Event/KeyEvent.h>
+#include <Core/Event/MouseEvent.h>
+#include <Core/Event/WindowEvent.h>
+
 // Logger macros / static Log.
 #include <Core/Log/Log.h>

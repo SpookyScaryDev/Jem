@@ -8,6 +8,40 @@ public:
         mousePos = Input::GetMousePosition();
     }
 
+    void OnEvent(Event* event) {
+        Game::OnEvent(event);
+
+        switch (event->GetType()) {
+            case EventType::WindowClose:
+                JEM_MESSAGE("Window closed event");
+                break;
+
+            case EventType::KeyPressed:
+                JEM_MESSAGE("Key pressed event ", (int)((KeyPressedEvent*)event)->GetKeyCode());
+                break;
+
+            case EventType::KeyReleased:
+                JEM_MESSAGE("Key released event ", (int)((KeyReleasedEvent*)event)->GetKeyCode());
+                break;
+
+            case EventType::MouseMoved:
+                JEM_MESSAGE("Mouse moved event ", ((MouseMovedEvent*)event)->GetXPos(), " ", ((MouseMovedEvent*)event)->GetYPos());
+                break;
+
+            case EventType::MouseScrolled:
+                JEM_MESSAGE("Mouse scrolled event ", ((MouseScrolledEvent*)event)->GetXOffset(), " ", ((MouseScrolledEvent*)event)->GetYOffset());
+                break;
+
+            case EventType::MouseButtonPressed:
+                JEM_MESSAGE("Mouse button pressed event ", (int)((MouseButtonPressedEvent*)event)->GetMouseCode());
+                break;
+
+            case EventType::MouseButtonReleased:
+                JEM_MESSAGE("Mouse button released event ", (int)((MouseButtonReleasedEvent*)event)->GetMouseCode());
+                break;
+        }
+    }
+
     void Update(double deltaTime) {
         static int i = 0;
         double range = 500;
@@ -34,19 +68,6 @@ public:
         case 5: red = 255;      grn = 0;        blu = 255 - x; break;//magenta
         }
         Renderer::SetClearColour(red, grn, blu);
-
-
-        // Test mouse input.
-        std::pair<int, int> newMousePos = Input::GetMousePosition();
-
-        if (mousePos != newMousePos) JEM_MESSAGE("Mouse moved to ", newMousePos.first, ", ", newMousePos.second);
-        if (Input::IsMouseButtonPressed(MouseCode::BUTTON_LEFT))   JEM_MESSAGE("Left mouse button pressed");
-        if (Input::IsMouseButtonPressed(MouseCode::BUTTON_MIDDLE)) JEM_MESSAGE("Middle mouse button pressed");
-        if (Input::IsMouseButtonPressed(MouseCode::BUTTON_RIGHT))  JEM_MESSAGE("Right mouse button pressed");
-        if (Input::IsMouseButtonPressed(MouseCode::BUTTON_X1))     JEM_MESSAGE("X1 mouse button pressed");
-        if (Input::IsMouseButtonPressed(MouseCode::BUTTON_X2))     JEM_MESSAGE("X2 mouse button pressed");
-
-        mousePos = Input::GetMousePosition();
     }
 
 private:

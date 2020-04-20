@@ -3,6 +3,9 @@
 #include "Game.h"
 
 #include <Core/Window/Window.h>
+#include <Core/Event/Event.h>
+#include <Core/Event/EventDispatcher.h>
+#include <Core/Event/MouseEvent.h>
 #include <Renderer/Renderer.h>
 #include <SDL.h>
 #include <Core/Input/Input.h>
@@ -21,8 +24,12 @@ Game::Game(const char* name, int width, int height) {
         JEM_CORE_ERROR("Game already exists. You can only create 1 Game");
     }
     mGame = this;
+    
+    mIsRunning = true;
 
     Init(name, width, height);
+
+    EventDispatcher::SetEventCallbackMethod(this, &Game::OnEvent);
 }
 
 // ==================
@@ -31,6 +38,19 @@ Game::Game(const char* name, int width, int height) {
 Game::~Game() {
     Shutdown();
     mGame = nullptr;
+}
+
+// ==================
+// Jem::Game::OnEvent
+// ==================
+void Game::OnEvent(Event* event) {
+    switch (event->GetType()) {
+        case EventType::WindowClose:
+            // Window closed, so stop the game.
+            JEM_CORE_MESSAGE("Window Closed");
+            mIsRunning = false;
+            break;
+    }
 }
 
 // ==================
@@ -92,7 +112,7 @@ void Game::Run() {
             previousTime = currentTime;
 
             // Update input manager.
-            mIsRunning = Input::Update(); // TODO: Add event system.
+            Input::Update();
 
             // Update using delta time.
             Update(elapsed.count());

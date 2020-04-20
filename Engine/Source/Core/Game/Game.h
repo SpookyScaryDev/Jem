@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Core/Window/Window.h>
+#include <Core/Event/Event.h>
 
 namespace Jem {
 
@@ -15,6 +16,7 @@ class Game {
 public:
                    Game(const char* name, int width, int height); // Calls Init.
     virtual        ~Game();                                       // Calls Shutdown.
+    virtual void   OnEvent(Event* event);                         // Event callback.
     static Game*   GetGame();                                     // Retrieve the static game instance.
     void           Run();
 
@@ -25,8 +27,8 @@ private:
     void           Init(const char* name, int width, int height) const;
     void           Shutdown() const;
 
-    bool           mIsRunning = true;
     static Game*   mGame;
+    bool           mIsRunning;
 };
 
 }
