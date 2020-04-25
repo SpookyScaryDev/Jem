@@ -10,6 +10,10 @@
 // Application base class.
 #include <Core/Game/Game.h>
 
+// Maths.
+#include <Core/Maths/Vector2f.h>
+#include <Core/Maths/Vector23.h>
+
 // Renderer
 #include <Renderer/Renderer.h>
 
