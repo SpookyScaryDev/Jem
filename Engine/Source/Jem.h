@@ -11,8 +11,8 @@
 #include <Core/Game/Game.h>
 
 // Maths.
-#include <Core/Maths/Vector2f.h>
-#include <Core/Maths/Vector3f.h>
+#include <Core/Maths/Vector2d.h>
+#include <Core/Maths/Vector3d.h>
 
 // Renderer
 #include <Renderer/Renderer.h>
