@@ -12,6 +12,8 @@
 #include <Core/Event/KeyEvent.h>
 #include <Core/Event/MouseEvent.h>
 
+#include <Core/Maths/Vector2d.h>
+
 namespace Jem {
 
 namespace Input {
@@ -90,8 +92,8 @@ namespace Input {
     // ==================
     // Jem::Input::GetMousePosition
     // ==================
-    std::pair<int, int> GetMousePosition() {
-        return std::make_pair(mouseXPosition, mouseYPosition);
+    Vector2d GetMousePosition() {
+        return Vector2d(mouseXPosition, mouseYPosition);
     }
 }
 

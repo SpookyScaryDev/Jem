@@ -69,9 +69,6 @@ public:
         }
         Renderer::SetClearColour(red, grn, blu);
     }
-
-private:
-    std::pair<int, int> mousePos;
 };
 
 namespace Jem {
