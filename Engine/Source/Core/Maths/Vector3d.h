@@ -9,7 +9,7 @@ namespace Jem {
 // ===============================================================================
 class Vector3d {
 public:
-                        Vector3d(double fx = 0.0, double fy = 0.0, double fz = 0.0);
+                        Vector3d(double dx = 0.0, double dy = 0.0, double dz = 0.0);
 
     void                Set(double dx, double dy, double dz);
 
