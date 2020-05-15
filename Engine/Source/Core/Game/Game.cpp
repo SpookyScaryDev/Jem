@@ -118,7 +118,6 @@ void Game::Run() {
             Update(elapsed.count());
 
             // Refresh Renderer.
-            Renderer::Clear();
             Renderer::Refresh();
         };
     }

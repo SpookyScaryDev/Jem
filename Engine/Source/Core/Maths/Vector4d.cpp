@@ -7,7 +7,7 @@ namespace Jem {
 // Jem::Vector4d::Vector4d
 // ==================
 Vector4d::Vector4d(double dx, double dy, double dz, double dw) :
-    x(dx), y(dy), z(dz), w(wd) {}
+    x(dx), y(dy), z(dz), w(dw) {}
 
 // ==================
 // Jem::Vector4d::Set

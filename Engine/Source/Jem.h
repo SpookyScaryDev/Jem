@@ -13,9 +13,11 @@
 // Maths.
 #include <Core/Maths/Vector2d.h>
 #include <Core/Maths/Vector3d.h>
+#include <Core/Maths/Vector4d.h>
 
 // Renderer
 #include <Renderer/Renderer.h>
+#include <Renderer/Texture.h>
 
 // Input
 #include <Core/Input/Input.h>

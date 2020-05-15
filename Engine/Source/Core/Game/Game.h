@@ -22,13 +22,13 @@ public:
 
 protected:
     virtual void   Update(double deltaTime) {};
+    bool           mIsRunning;
 
 private:
     void           Init(const char* name, int width, int height) const;
     void           Shutdown() const;
 
     static Game*   mGame;
-    bool           mIsRunning;
 };
 
 }
