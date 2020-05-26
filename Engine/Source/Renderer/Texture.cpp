@@ -8,12 +8,6 @@ namespace Jem {
 
 // ==================
 // Jem::Texture::Texture
-// ==================
-Texture::Texture() :
-    mTextureData(nullptr) {}
-
-// ==================
-// Jem::Texture::Texture
 //
 // Currently only loads .bmp files.
 // ==================
@@ -32,7 +26,7 @@ Texture::Texture(const std::string& filePath):
 // Jem::Texture::~Texture
 // ==================
 Texture::~Texture() {
-    if (mTextureData == nullptr) {
+    if (mTextureData != nullptr) {
         SDL_DestroyTexture(mTextureData);
         mTextureData = nullptr;
     }

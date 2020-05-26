@@ -5,7 +5,7 @@ using namespace Jem;
 class Sandbox : public Game {
 public:
     Sandbox() : Game("Sandbox", 500, 500) {
-        texture = new Texture("Assets/NotArt.bmp");
+        texture = new Texture("Assets/Art.bmp");
 
         position.x = Window::GetWidth() / 2;
         position.y = Window::GetHeight() / 2;

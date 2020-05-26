@@ -72,7 +72,9 @@ void Game::Init(const char* name, int width, int height) const{
     JEM_CORE_MESSAGE("Game::Init: Initializing Subsystems");
 
     JEM_CORE_MESSAGE("SDL_Init: Initializing SDL2");
-    SDL_Init(SDL_INIT_EVERYTHING);
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+        JEM_CORE_ERROR("SDL_Init: Failed to initialize SDL2 - ", SDL_GetError());
+    }
 
     JEM_CORE_MESSAGE("InitWindow: Creating Window");
     Window::Init(name, width, height);
