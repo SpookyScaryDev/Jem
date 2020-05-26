@@ -18,8 +18,9 @@ Texture::Texture(const std::string& filePath):
     SDL_Surface* surface = SDL_LoadBMP(filePath.c_str());
     mTextureData = SDL_CreateTextureFromSurface(Renderer::GetRawRenderer(), surface);
     JEM_CORE_ASSERT(mTextureData, "Couldn't load texture \"" + mFilePath + "\"");
-
     SDL_FreeSurface(surface);
+
+    SDL_QueryTexture(mTextureData, nullptr, nullptr, &mWidth, &mHeight);
 }
 
 // ==================
@@ -37,6 +38,20 @@ Texture::~Texture() {
 // ==================
 SDL_Texture* Texture::GetRawTexture() const {
     return mTextureData;
+}
+
+// ==================
+// Jem::Texture::GetWidth
+// ==================
+int Texture::GetWidth() const {
+    return mWidth;
+}
+
+// ==================
+// Jem::Texture::GetHeight
+// ==================
+int Texture::GetHeight() const {
+    return mHeight;
 }
 
 }

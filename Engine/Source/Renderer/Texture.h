@@ -15,10 +15,14 @@ public:
                        ~Texture();
 
     SDL_Texture*       GetRawTexture() const;
+    int                GetWidth() const;
+    int                GetHeight() const;
 
 private:
     std::string        mFilePath;
     SDL_Texture*       mTextureData;
+    int                mWidth;
+    int                mHeight;
 };
 
 }

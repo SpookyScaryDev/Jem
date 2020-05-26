@@ -105,14 +105,14 @@ namespace Renderer {
     // ==================
     // Jem::Renderer::DrawTexturedRectangle
     // ==================
-    void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture texture) {
+    void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture) {
         SDL_Rect rect;
         rect.x = position.x;
         rect.y = position.y;
         rect.w = size.x;
         rect.h = size.y;
 
-        SDL_RenderCopy(renderer, texture.GetRawTexture(), nullptr, &rect);
+        SDL_RenderCopy(renderer, texture->GetRawTexture(), nullptr, &rect);
     }
 }
 
