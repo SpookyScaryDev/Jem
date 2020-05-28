@@ -2,40 +2,64 @@
 
 using namespace Jem;
 
+struct SubTexture {
+    Texture*        texture;
+    Vector2d        topLeft;
+    Vector2d        bottomRight;
+};
+
+SubTexture* CreateSubTextureFromCoords(Texture* texture, const Vector2d& coords, const Vector2d& subTextureSize) {
+    Vector2d topLeft = { (coords.x * subTextureSize.x) / texture->GetWidth(), (coords.y * subTextureSize.y) / texture->GetHeight() };
+    Vector2d bottomRight = { ((coords.x + 1) * subTextureSize.x) / texture->GetWidth(), ((coords.y + 1) * subTextureSize.y) / texture->GetHeight() };
+
+    return new SubTexture { texture, topLeft, bottomRight };
+}
+
 class Sandbox : public Game {
 public:
     Sandbox() : Game("Sandbox", 500, 500) {
-        texture = new Texture("Assets/Art.bmp");
+        texture = new Texture("Assets/foo.bmp");
+
+        frames[0] = CreateSubTextureFromCoords(texture, { 0, 0 }, { 64, 205 });
+        frames[1] = CreateSubTextureFromCoords(texture, { 1, 0 }, { 64, 205 });
+        frames[2] = CreateSubTextureFromCoords(texture, { 2, 0 }, { 64, 205 });
+        frames[3] = CreateSubTextureFromCoords(texture, { 3, 0 }, { 64, 205 });
 
         position.x = Window::GetWidth() / 2;
         position.y = Window::GetHeight() / 2;
 
-        Renderer::SetClearColour(Vector4d(100, 100, 255, 255));
+        Renderer::SetClearColour(Vector4d(255, 255, 255, 255));
     }
 
     void Update(double deltaTime) {
-        if (Input::IsKeyPressed(KeyCode::KEY_UP))     position.y -= 5;
-        if (Input::IsKeyPressed(KeyCode::KEY_DOWN))   position.y += 5;
-        if (Input::IsKeyPressed(KeyCode::KEY_LEFT))   position.x -= 5;
-        if (Input::IsKeyPressed(KeyCode::KEY_RIGHT))  position.x += 5;
+        numFrames++;
+
+        if (Input::IsKeyPressed(KeyCode::KEY_UP))     position.y -= 3;
+        if (Input::IsKeyPressed(KeyCode::KEY_DOWN))   position.y += 3;
+        if (Input::IsKeyPressed(KeyCode::KEY_LEFT))   position.x -= 3;
+        if (Input::IsKeyPressed(KeyCode::KEY_RIGHT))  position.x += 3;
         if (Input::IsKeyPressed(KeyCode::KEY_ESCAPE)) mIsRunning = false;
 
-        Renderer::Clear();
-        Renderer::DrawFilledRectangle(position, Vector2d(100, 100), Vector4d(255, 100, 100, 255));
-        Renderer::DrawRectangle(position, Vector2d(100, 100), Vector4d(10, 255, 100, 255));
-        Renderer::DrawTexturedRectangle(position + Vector2d(15, 15), Vector2d(70, 70), texture);
+        if (numFrames % 5 == 0) currentFrame++;
+        if (currentFrame > 3)   currentFrame = 0;
 
-        Renderer::DrawLine(Vector2d(position.x, position.y + 75), Vector2d(position.x - 25, position.y + 50), Vector4d(255, 100, 100, 255));
-        Renderer::DrawLine(Vector2d(position.x + 100, position.y + 75), Vector2d(position.x + 125, position.y + 50), Vector4d(255, 100, 100, 255));
+        Renderer::Clear();
+        Renderer::DrawTexturedRectangle(position, { 64, 205 },
+            frames[currentFrame]->texture, frames[currentFrame]->topLeft, frames[currentFrame]->bottomRight);
+
+        Renderer::DrawFilledRectangle({ 0, 450 }, { 500, 50 }, { 0, 0, 0 });
     }
 
 private:
+
     Vector2d position;
     Texture* texture;
+
+    int         numFrames     = 0;
+    int         currentFrame  = 0;
+    SubTexture* frames[4];
 };
 
-namespace Jem {
-    Game* CreateGame() {
-        return new Sandbox();
-    }
+Game* Jem::CreateGame() {
+    return new Sandbox();
 }

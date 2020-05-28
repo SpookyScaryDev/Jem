@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 #include <Core/Window/Window.h>
+#include <Renderer/Texture.h>
 
 namespace Jem {
 
@@ -104,15 +105,25 @@ namespace Renderer {
 
     // ==================
     // Jem::Renderer::DrawTexturedRectangle
+    //
+    // Draws the whole texture by default.
     // ==================
-    void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture) {
+    void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
+                               Vector2d topLeft, Vector2d bottomRight) {
+
         SDL_Rect rect;
         rect.x = position.x;
         rect.y = position.y;
         rect.w = size.x;
         rect.h = size.y;
 
-        SDL_RenderCopy(renderer, texture->GetRawTexture(), nullptr, &rect);
+        SDL_Rect clip;
+        clip.x = texture->GetWidth()  * topLeft.x;
+        clip.y = texture->GetHeight() * topLeft.y;
+        clip.w = texture->GetWidth()  * (bottomRight.x - topLeft.x);
+        clip.h = texture->GetHeight() * (bottomRight.y - topLeft.y);
+
+        SDL_RenderCopy(renderer, texture->GetRawTexture(), &clip, &rect);
     }
 }
 

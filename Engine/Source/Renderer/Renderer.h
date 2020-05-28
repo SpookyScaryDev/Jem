@@ -21,7 +21,8 @@ namespace Renderer {
     void                    DrawLine(const Vector2d& position1, const Vector2d& position2, const Vector4d& colour);
     void                    DrawRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
     void                    DrawFilledRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
-    void                    DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture);
+    void                    DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
+                                                  Vector2d topLeft = {0.0, 0.0}, Vector2d bottomRight = {1.0, 1.0});
 }
 
 }
