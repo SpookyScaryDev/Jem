@@ -109,7 +109,7 @@ namespace Renderer {
     // Draws the whole texture by default.
     // ==================
     void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
-                               Vector2d topLeft, Vector2d bottomRight) {
+                               Vector2d topLeft, Vector2d bottomRight, bool flipHorizontally, bool flipVertically) {
 
         SDL_Rect rect;
         rect.x = position.x;
@@ -123,7 +123,12 @@ namespace Renderer {
         clip.w = texture->GetWidth()  * (bottomRight.x - topLeft.x);
         clip.h = texture->GetHeight() * (bottomRight.y - topLeft.y);
 
-        SDL_RenderCopy(renderer, texture->GetRawTexture(), &clip, &rect);
+        SDL_RendererFlip flip = SDL_FLIP_NONE;
+        if (flipVertically && flipHorizontally)    flip = SDL_RendererFlip(SDL_FLIP_VERTICAL | SDL_FLIP_HORIZONTAL);
+        else if (flipVertically)      flip = SDL_FLIP_VERTICAL;
+        else if (flipHorizontally)    flip = SDL_FLIP_HORIZONTAL;
+
+        SDL_RenderCopyEx(renderer, texture->GetRawTexture(), &clip, &rect, 0, NULL, flip);
     }
 }
 
