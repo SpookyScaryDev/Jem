@@ -4,30 +4,47 @@ using namespace Jem;
 
 struct SpriteComponent {
     Texture*        texture;
-    Vector2d        topLeft;
-    Vector2d        bottomRight;
-    bool            isFlippedVertical;
-    bool            isFlippedHorizontal;
+    bool            isFlippedVertical   = false;
+    bool            isFlippedHorizontal = false;
+    Vector2d        topLeft             = {0.0, 0.0};
+    Vector2d        bottomRight         = {1.0, 1.0 };
 };
 
 struct TransformComponent {
     Vector2d        position;
+    Vector2d        scale;
+    double          rotation = 0.0;
+    Vector2d        center   = { 0.5, 0.5 };
 };
 
-void RenderSystem(ECSManager* world, double dt) {
+void RenderSystem(ECSManager* world) {
     for (Entity entity : world->GetEntitiesWith<SpriteComponent, TransformComponent>()) {
-        SpriteComponent sprite = world->GetComponent<SpriteComponent>(entity);
-        TransformComponent transform = world->GetComponent<TransformComponent>(entity);
-
+        SpriteComponent& sprite = world->GetComponent<SpriteComponent>(entity);
+        TransformComponent& transform = world->GetComponent<TransformComponent>(entity);
+        
         Renderer::DrawTexturedRectangle(
             transform.position,
-            { 500, 500 },
+            transform.scale,
             sprite.texture,
             sprite.topLeft,
             sprite.bottomRight,
+            transform.rotation,
+            transform.center,
             sprite.isFlippedHorizontal,
             sprite.isFlippedVertical
         );
+    }
+}
+
+void SpinnySystem(ECSManager* world) {
+    for (Entity entity : world->GetEntitiesWith<TransformComponent>()) {
+        TransformComponent& transform = world->GetComponent<TransformComponent>(entity);
+
+        static double angle = 0;
+        angle += 0.2;
+        if (angle == 360) angle = 0;
+
+        transform.rotation = angle;
     }
 }
 
@@ -38,30 +55,22 @@ public:
         world.RegisterComponentType<SpriteComponent>();
         world.RegisterComponentType<TransformComponent>();
 
-        entity1 = world.CreateEntity(1);
-        world.AddComponent<SpriteComponent>(entity1, { texture, {0.0,0.0}, {1.0,1.0}, false, false });
-        world.AddComponent<TransformComponent>(entity1, { {0, 0} });
-
-        entity2 = world.CreateEntity(2);
-        world.AddComponent<SpriteComponent>(entity2, { texture, {0.0,0.0}, {1.0,1.0}, false, false });
-        world.AddComponent<TransformComponent>(entity2, { {0, 10} });
-
-        entity3 = world.CreateEntity(3);
-        world.AddComponent<SpriteComponent>(entity3, { texture, {0.0,0.0}, {1.0,1.0}, false, false });
-        world.AddComponent<TransformComponent>(entity3, { {0, 20} });
-
+        for (int i = 10; i >= 0; i--) {
+            Entity entity = world.CreateEntity(i);
+            world.AddComponent<SpriteComponent>(entity, { texture });
+            world.AddComponent<TransformComponent>(entity, { {125, double(20 + 20 * i) }, { 250, 250 } });
+        }
     }
 
     void Update(double deltaTime) {
-        RenderSystem(&world, deltaTime);
+        Renderer::Clear();
+        SpinnySystem(&world);
+        RenderSystem(&world);
         Renderer::Refresh();
     }
 
 private:
     Texture*   texture;
-    Entity     entity1;
-    Entity     entity2;
-    Entity     entity3;
     ECSManager world;
 };
 

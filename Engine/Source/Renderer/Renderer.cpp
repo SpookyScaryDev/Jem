@@ -107,9 +107,12 @@ namespace Renderer {
     // Jem::Renderer::DrawTexturedRectangle
     //
     // Draws the whole texture by default.
+    // Angles are in degrees.
     // ==================
     void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
-                               Vector2d topLeft, Vector2d bottomRight, bool flipHorizontally, bool flipVertically) {
+                               const Vector2d& topLeft, const Vector2d& bottomRight,
+                               double angle, const Vector2d& center,
+                               bool flipHorizontally, bool flipVertically) {
 
         SDL_Rect rect;
         rect.x = position.x;
@@ -128,7 +131,11 @@ namespace Renderer {
         else if (flipVertically)      flip = SDL_FLIP_VERTICAL;
         else if (flipHorizontally)    flip = SDL_FLIP_HORIZONTAL;
 
-        SDL_RenderCopyEx(renderer, texture->GetRawTexture(), &clip, &rect, 0, NULL, flip);
+        SDL_Point centerPoint;
+        centerPoint.x = center.x * rect.w;
+        centerPoint.y = center.y* rect.h;
+
+        SDL_RenderCopyEx(renderer, texture->GetRawTexture(), &clip, &rect, angle, &centerPoint, flip);
     }
 }
 

@@ -64,7 +64,8 @@ std::vector<Entity> ECSManager::GetEntitiesWith() {
     ComponentSignature systemSignature = CreateComponentSignature<Args...>();
     std::vector<Entity> entities;
     for (auto i : mComponentSignatures) {
-        if ((i.second & systemSignature) == i.second) entities.push_back(i.first);
+        if ((i.second & systemSignature) == systemSignature) 
+            entities.push_back(i.first);
     }
     return entities;
 }

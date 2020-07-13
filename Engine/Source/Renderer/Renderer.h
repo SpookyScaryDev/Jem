@@ -22,7 +22,8 @@ namespace Renderer {
     void                    DrawRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
     void                    DrawFilledRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
     void                    DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
-                                                  Vector2d topLeft = {0.0, 0.0}, Vector2d bottomRight = {1.0, 1.0}, 
+                                                  const Vector2d& topLeft = {0.0, 0.0}, const Vector2d& bottomRight = {1.0, 1.0},
+                                                  double angle = 0.0, const Vector2d& center = {0.5, 0.5},                       // Angle is in degrees.
                                                   bool flipHorizontally = false, bool flipVertically = false);
 }
 
