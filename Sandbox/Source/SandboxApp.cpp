@@ -2,21 +2,6 @@
 
 using namespace Jem;
 
-struct SpriteComponent {
-    Texture*        texture;
-    bool            isFlippedVertical   = false;
-    bool            isFlippedHorizontal = false;
-    Vector2d        topLeft             = {0.0, 0.0};
-    Vector2d        bottomRight         = {1.0, 1.0 };
-};
-
-struct TransformComponent {
-    Vector2d        position;
-    Vector2d        scale;
-    double          rotation = 0.0;
-    Vector2d        center   = { 0.5, 0.5 };
-};
-
 void RenderSystem(ECSManager* world) {
     for (Entity entity : world->GetEntitiesWith<SpriteComponent, TransformComponent>()) {
         SpriteComponent& sprite = world->GetComponent<SpriteComponent>(entity);

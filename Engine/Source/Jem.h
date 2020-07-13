@@ -33,5 +33,9 @@
 // ECS
 #include <ECS/ECSManager.h>
 
+// Components
+#include <Components/TextureComponent.h>
+#include <Components/TransformComponent.h>
+
 // Logger macros / static Log.
 #include <Core/Log/Log.h>
