@@ -5,7 +5,7 @@
 
 namespace Jem {
 
-struct SpriteComponent {
+struct TextureComponent {
     Texture*        texture;
     bool            isFlippedVertical   = false;
     bool            isFlippedHorizontal = false;
