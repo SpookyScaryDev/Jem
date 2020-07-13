@@ -37,5 +37,8 @@
 #include <Components/TextureComponent.h>
 #include <Components/TransformComponent.h>
 
+// Systems
+#include <Systems/RenderSystem.h>
+
 // Logger macros / static Log.
 #include <Core/Log/Log.h>
