@@ -9,11 +9,17 @@
 
 namespace Jem {
 
+// ==================
+// Jem::ECSManager::ECSManager
+// ==================
 ECSManager::ECSManager() {
     mComponentSignatures = std::unordered_map<Entity, ComponentSignature>();
     mComponentArrays = std::array<ComponentArrayAbstract*, MAX_COMPONENT_TYPES>();
 }
 
+// ==================
+// Jem::ECSManager::~ECSManager
+// ==================
 ECSManager::~ECSManager() {
     for (ComponentArrayAbstract* componentArray : mComponentArrays) {
         if (componentArray != nullptr) {
@@ -22,11 +28,17 @@ ECSManager::~ECSManager() {
     }
 }
 
+// ==================
+// Jem::ECSManager::CreateEntity
+// ==================
 Entity ECSManager::CreateEntity(int id) {
     mComponentSignatures.emplace(id, ComponentSignature());
     return id;
 }
 
+// ==================
+// Jem::ECSManager::DestroyEntity
+// ==================
 void ECSManager::DestroyEntity(Entity entity) {
     for (int i = 0; i < *GetComponentCount(); i++) {
         mComponentArrays[i]->OnEntityDestroyed(entity);
@@ -34,14 +46,23 @@ void ECSManager::DestroyEntity(Entity entity) {
     mComponentSignatures.erase(entity);
 }
 
+// ==================
+// Jem::ECSManager::GetComponentSignature
+// ==================
 ComponentSignature ECSManager::GetComponentSignature(Entity entity) const {
     return mComponentSignatures.at(entity);
 }
 
+// ==================
+// Jem::ECSManager::SetComponentSignature
+// ==================
 void ECSManager::SetComponentSignature(Entity entity, ComponentSignature signature) {
     mComponentSignatures[entity] = signature;
 }
 
+// ==================
+// Jem::ECSManager::GetComponentCount
+// ==================
 int* ECSManager::GetComponentCount() const {
     static int componentCount = 0;
     return &componentCount;
