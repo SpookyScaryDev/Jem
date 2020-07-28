@@ -27,6 +27,10 @@ namespace Renderer {
             JEM_CORE_ERROR("Renderer::Init: Failed to create renderer - ", SDL_GetError());
         }
 
+        SDL_RendererInfo rendererInfo;
+        SDL_GetRendererInfo(renderer, &rendererInfo);
+        JEM_CORE_MESSAGE("Renderer API: ", rendererInfo.name);
+
         clearColour = Vector4d(0, 0, 0, 0);
     }
 
