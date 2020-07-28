@@ -9,6 +9,9 @@
 
 namespace Jem {
 
+// ==================
+// Jem::RenderSystem
+// ==================
 void RenderSystem(ECSManager* world) {
     for (Entity entity : world->GetEntitiesWith<TextureComponent, TransformComponent>()) {
         TextureComponent& sprite = world->GetComponent<TextureComponent>(entity);

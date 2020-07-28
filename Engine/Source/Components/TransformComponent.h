@@ -4,6 +4,11 @@
 
 namespace Jem {
 
+// ===============================================================================
+//
+//     Component containing the transform of an entities.
+//
+// ===============================================================================
 struct TransformComponent {
     Vector2d        position;
     Vector2d        scale;
