@@ -92,6 +92,8 @@ void Game::Init(const char* name, int width, int height) const{
 // Jem::Game::Shutdown
 // ==================
 void Game::Shutdown() const{
+    JEM_CORE_MESSAGE("Shutting down engine.");
+
     Input::Shutdown();
     Renderer::Shutdown();
     Window::Destroy();

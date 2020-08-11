@@ -65,8 +65,16 @@ public:
 
     void Update(double deltaTime) {
         Renderer::Clear();
+
+        if (Input::IsKeyPressed(KeyCode::KEY_W)) camera.y -= 10;
+        if (Input::IsKeyPressed(KeyCode::KEY_S)) camera.y += 10;
+        if (Input::IsKeyPressed(KeyCode::KEY_D)) camera.x += 10;
+        if (Input::IsKeyPressed(KeyCode::KEY_A)) camera.x -= 10;
+
+        if (Input::IsKeyPressed(KeyCode::KEY_ESCAPE)) mIsRunning = false;
+
         SpinnySystem(&world);
-        RenderSystem(&world);
+        RenderSystem(&world, camera);
         PlatformerControllerSystem(&world);
         PhysicsSystem(&world);
         Renderer::Refresh();
@@ -75,6 +83,7 @@ public:
 private:
     Texture*   texture;
     ECSManager world;
+    Camera     camera;
 };
 
 Game* Jem::CreateGame() {
