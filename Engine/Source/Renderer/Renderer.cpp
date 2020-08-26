@@ -5,12 +5,14 @@
 #include <SDL.h>
 #include <Core/Window/Window.h>
 #include <Renderer/Texture.h>
+#include <Renderer/Camera.h>
 
 namespace Jem {
 
 namespace Renderer {
     SDL_Renderer* renderer;
     Vector4d      clearColour;
+    Camera        sceneCamera;
 
     // ==================
     // Jem::Renderer::Init
@@ -72,22 +74,42 @@ namespace Renderer {
     }
 
     // ==================
+    // Jem::Renderer::BeginScene
+    // ==================
+    void BeginScene(const Camera& camera) {
+        sceneCamera = camera;
+    }
+
+    // ==================
+    // Jem::Renderer::EndScene
+    // ==================
+    void EndScene() {
+        sceneCamera = { {0.0, 0.0}, 1.0 };
+    }
+
+    // ==================
     // Jem::Renderer::DrawLine
     // ==================
     void DrawLine(const Vector2d& position1, const Vector2d& position2, const Vector4d& colour) {
+        Vector2d screenCoords1 = sceneCamera.CalculateScreenCoords(position1);
+        Vector2d screenCoords2 = sceneCamera.CalculateScreenCoords(position2);
+
         SDL_SetRenderDrawColor(renderer, colour.x, colour.y, colour.z, colour.w);
-        SDL_RenderDrawLine(renderer, position1.x, position1.y, position2.x, position2.y);
+        SDL_RenderDrawLine(renderer, screenCoords1.x, screenCoords1.y, screenCoords2.x, screenCoords2.y);
     }
 
     // ==================
     // Jem::Renderer::DrawRectangle
     // ==================
     void DrawRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour) {
+        Vector2d screenCoords = sceneCamera.CalculateScreenCoords(position);
+        Vector2d screenSize   = sceneCamera.CalculateScreenSize(size);
+
         SDL_Rect rect;
-        rect.x = position.x;
-        rect.y = position.y;
-        rect.w = size.x;
-        rect.h = size.y;
+        rect.x = screenCoords.x;
+        rect.y = screenCoords.y;
+        rect.w = screenSize.x;
+        rect.h = screenSize.y;
 
         SDL_SetRenderDrawColor(renderer, colour.x, colour.y, colour.z, colour.w);
         SDL_RenderDrawRect(renderer, &rect);
@@ -97,11 +119,14 @@ namespace Renderer {
     // Jem::Renderer::DrawRectangle
     // ==================
     void DrawFilledRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour) {
+        Vector2d screenCoords = sceneCamera.CalculateScreenCoords(position);
+        Vector2d screenSize = sceneCamera.CalculateScreenSize(size);
+
         SDL_Rect rect;
-        rect.x = position.x;
-        rect.y = position.y;
-        rect.w = size.x;
-        rect.h = size.y;
+        rect.x = screenCoords.x;
+        rect.y = screenCoords.y;
+        rect.w = screenSize.x;
+        rect.h = screenSize.y;
 
         SDL_SetRenderDrawColor(renderer, colour.x, colour.y, colour.z, colour.w);
         SDL_RenderFillRect(renderer, &rect);
@@ -118,11 +143,15 @@ namespace Renderer {
                                double angle, const Vector2d& center,
                                bool flipHorizontally, bool flipVertically) {
 
+
+        Vector2d screenCoords = sceneCamera.CalculateScreenCoords(position);
+        Vector2d screenSize   = sceneCamera.CalculateScreenSize(size);
+
         SDL_Rect rect;
-        rect.x = position.x;
-        rect.y = position.y;
-        rect.w = size.x;
-        rect.h = size.y;
+        rect.x = screenCoords.x;
+        rect.y = screenCoords.y;
+        rect.w = screenSize.x;
+        rect.h = screenSize.y;
 
         SDL_Rect clip;
         clip.x = texture->GetWidth()  * topLeft.x;

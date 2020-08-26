@@ -12,13 +12,13 @@ namespace Jem {
 // ==================
 // Jem::RenderSystem
 // ==================
-void RenderSystem(ECSManager* world, const Camera& camera) {
+void RenderSystem(ECSManager* world) {
     for (Entity entity : world->GetEntitiesWith<TextureComponent, TransformComponent>()) {
         TextureComponent& sprite = world->GetComponent<TextureComponent>(entity);
         TransformComponent& transform = world->GetComponent<TransformComponent>(entity);
         
         Renderer::DrawTexturedRectangle(
-            transform.position      - camera,
+            transform.position,
             transform.scale,
             sprite.texture,
             sprite.topLeft,

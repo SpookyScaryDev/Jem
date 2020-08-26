@@ -5,7 +5,7 @@
 
 namespace Jem {
 
-    void RenderSystem(ECSManager* world, const Camera& camera = { 0.0, 0.0 });
+    void RenderSystem(ECSManager* world);
 
 }
 

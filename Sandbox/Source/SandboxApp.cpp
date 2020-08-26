@@ -2,9 +2,31 @@
 
 using namespace Jem;
 
+void BasicCameraController(Camera& camera) {
+    static bool     wasMousePressed = false;
+    static Vector2d firstMousePosition;
+
+    if (Input::IsMouseButtonPressed(MouseCode::BUTTON_MIDDLE)) {
+        if (!wasMousePressed) {
+            firstMousePosition = Input::GetMousePosition();
+            wasMousePressed = true;
+        }
+
+        camera.position += (Input::GetMousePosition() - firstMousePosition) / camera.zoom;
+        firstMousePosition = Input::GetMousePosition();
+
+    } else {
+        wasMousePressed = false;
+    }
+
+    if (Input::IsKeyPressed(KeyCode::KEY_Q)) camera.zoom += 0.01 * camera.zoom;
+    if (Input::IsKeyPressed(KeyCode::KEY_A)) camera.zoom -= 0.01 * camera.zoom;
+}
+
 struct PhysicsComponent {
     Vector2d velocity  = { 0.0, 0.0 };
     Vector2d drag      = { 0.0, 0.0 };
+    //Vector2d gravity   = { 0.0, 0.0 };
     //Vector2d gravity   = { 0.0, 0.0 };
 };
 
@@ -57,7 +79,7 @@ public:
         for (int i = 10; i >= 0; i--) {
             Entity entity = world.CreateEntity(i);
             world.AddComponent<TextureComponent>(entity, { texture });
-            world.AddComponent<TransformComponent>(entity, { Vector2d(Window::GetWidth() / 2 - 125, Window::GetHeight() / 2 - 125 + 20 * i ), { 250, 250 } });
+            world.AddComponent<TransformComponent>(entity, { Vector2d(625, 200 + i * 20), { 250, 250 } });
             world.AddComponent<PhysicsComponent>(entity, { {}, { 1, 1 },});
             world.AddComponent<PlatformerControllerComponent>(entity, {});
         }
@@ -66,17 +88,20 @@ public:
     void Update(double deltaTime) {
         Renderer::Clear();
 
-        if (Input::IsKeyPressed(KeyCode::KEY_W)) camera.y -= 10;
-        if (Input::IsKeyPressed(KeyCode::KEY_S)) camera.y += 10;
-        if (Input::IsKeyPressed(KeyCode::KEY_D)) camera.x += 10;
-        if (Input::IsKeyPressed(KeyCode::KEY_A)) camera.x -= 10;
-
         if (Input::IsKeyPressed(KeyCode::KEY_ESCAPE)) mIsRunning = false;
 
+        BasicCameraController(camera);
         SpinnySystem(&world);
-        RenderSystem(&world, camera);
         PlatformerControllerSystem(&world);
         PhysicsSystem(&world);
+
+        Renderer::BeginScene(camera);
+        RenderSystem(&world);
+        Renderer::DrawFilledRectangle({ 0,0 }, { 500,500 }, { 0,255,0 });
+        Renderer::DrawRectangle({ 0,0 }, { 500,500 }, { 255,0,0 });
+        Renderer::DrawLine({ 0,0 }, { 500, 500 }, { 255, 0, 0 });
+        Renderer::EndScene();
+
         Renderer::Refresh();
     }
 

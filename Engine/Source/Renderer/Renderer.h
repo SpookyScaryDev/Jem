@@ -3,6 +3,7 @@
 #include <Core/Maths/Vector2d.h>
 #include <Core/Maths/Vector4d.h>
 #include <Renderer/Texture.h>
+#include <Renderer/Camera.h>
 
 struct SDL_Renderer;
 
@@ -17,6 +18,9 @@ namespace Renderer {
     void                    SetClearColour(const Vector4d& colour);
     void                    Clear();                             // Clear screen to the clear colour.
     void                    Refresh();
+
+    void                    BeginScene(const Camera& camera);
+    void                    EndScene();
 
     void                    DrawLine(const Vector2d& position1, const Vector2d& position2, const Vector4d& colour);
     void                    DrawRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
