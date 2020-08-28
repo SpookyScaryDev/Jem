@@ -21,6 +21,7 @@ namespace Input {
     Uint8        mouseState;
     int          mouseXPosition; // TODO: Replace with a vector maybe.
     int          mouseYPosition;
+    Vector2d     mouseScrollWheelPosition = { 0.0, 0.0 };
 
     // ==================
     // Jem::Input::Init
@@ -69,6 +70,8 @@ namespace Input {
 
                 case SDL_MOUSEWHEEL:
                     EventDispatcher::DispatchEvent(new MouseScrolledEvent(event.wheel.x, event.wheel.y));
+                    mouseScrollWheelPosition.x += event.wheel.x;
+                    mouseScrollWheelPosition.y += event.wheel.y;
                     break;
             }
         }
@@ -94,6 +97,13 @@ namespace Input {
     // ==================
     Vector2d GetMousePosition() {
         return Vector2d(mouseXPosition, mouseYPosition);
+    }
+
+    // ==================
+    // Jem::Input::GetMouseScrollWheelPosition
+    // ==================
+    Vector2d GetMouseScrollWheelPosition() {
+        return mouseScrollWheelPosition;
     }
 }
 

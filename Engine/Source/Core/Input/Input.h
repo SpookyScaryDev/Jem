@@ -9,10 +9,11 @@ namespace Jem {
 namespace Input {
     void                  Init();
     void                  Shutdown();
-    void                  Update();                            // Returns true to continue, false to stop. TODO: Fix!  
+    void                  Update();
     bool                  IsKeyPressed(KeyCode key);
     bool                  IsMouseButtonPressed(MouseCode key);
-    Vector2d              GetMousePosition();                  // TODO: Replace with vector maybe.
+    Vector2d              GetMousePosition();
+    Vector2d              GetMouseScrollWheelPosition();
 }
 
 }
