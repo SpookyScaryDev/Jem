@@ -2,31 +2,6 @@
 
 using namespace Jem;
 
-void BasicCameraController(Camera& camera, float moveSpeed = 1.0, float zoomSpeed = 0.05) {
-    static bool     wasMousePressed = false;
-    static Vector2d lastMousePosition;
-    static Vector2d lastMouseWheelPosition = Input::GetMouseScrollWheelPosition();
-
-    if (Input::IsMouseButtonPressed(MouseCode::BUTTON_MIDDLE)) {
-        if (!wasMousePressed) {
-            lastMousePosition = Input::GetMousePosition();
-            wasMousePressed = true;
-        }
-
-        camera.position += ((Input::GetMousePosition() - lastMousePosition) / camera.zoom) * moveSpeed;
-        lastMousePosition = Input::GetMousePosition();
-
-    } else {
-        wasMousePressed = false;
-    }
-
-    float oldZoom = camera.zoom;
-    camera.zoom += (Input::GetMouseScrollWheelPosition().y - lastMouseWheelPosition.y) * zoomSpeed;
-    if (camera.zoom <= 0.0) camera.zoom = oldZoom;
-
-    lastMouseWheelPosition = Input::GetMouseScrollWheelPosition();
-}
-
 struct PhysicsComponent {
     Vector2d velocity  = { 0.0, 0.0 };
     Vector2d drag      = { 0.0, 0.0 };

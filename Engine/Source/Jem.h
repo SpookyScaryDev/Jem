@@ -2,7 +2,7 @@
 
 // Core systems.
 #include <Core/Core.h>
-#include <Core/Assert.h>            // Assertion macros.
+#include <Core/Assert.h>
 
 // Entry point.
 #include <Core/EntryPoint/EntryPoint.h>
@@ -29,6 +29,8 @@
 // Renderer
 #include <Renderer/Renderer.h>
 #include <Renderer/Texture.h>
+#include <Renderer/Camera.h>
+#include <Renderer/BasicCameraController.h>
 
 // ECS
 #include <ECS/ECSManager.h>
