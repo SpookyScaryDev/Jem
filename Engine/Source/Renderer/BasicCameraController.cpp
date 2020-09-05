@@ -7,6 +7,12 @@
 
 namespace Jem {
 
+// ==================
+// Jem::BasicCameraController
+//
+// Middle mouse click and drag mouse to move,
+// Mouse wheel to zoom;
+// ==================
 void BasicCameraController(Camera& camera, float moveSpeed, float zoomSpeed) {
     static bool     wasMousePressed = false;
     static Vector2d lastMousePosition;
