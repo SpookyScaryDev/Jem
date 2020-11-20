@@ -32,6 +32,11 @@
 #include <Renderer/Camera.h>
 #include <Renderer/BasicCameraController.h>
 
+// Collision Detection
+#include <Collision/Collision.h>
+#include <Collision/CollisionPoly.h>
+#include <Collision/CollisionRect.h>
+
 // ECS
 #include <ECS/ECSManager.h>
 
