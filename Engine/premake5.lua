@@ -19,7 +19,8 @@ project "Jem"
 
 	links {
 		"SDL2",
-		"SDL2main"
+		"SDL2main",
+        "SDL2_ttf"
 	}
 
     files {
@@ -30,7 +31,13 @@ project "Jem"
     includedirs {
 		"Vendor/SDL2/include",
         projectdir .. "Source/Core",    --Needed for pch.
-        projectdir .. "Source"
+        projectdir .. "Source",
+
+		"Vendor/SDL_ttf/include"
+    }
+
+    libdirs {
+        "Vendor/SDL_ttf/lib/x64"
     }
 
     filter "system:windows"
