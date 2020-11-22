@@ -95,6 +95,8 @@ public:
 
         JEM_WARNING("Collision: ", Collision::RectVsRect(base, body));
 
+        Renderer::DrawString({ 0, 0 }, "Hello World!");
+
         Renderer::EndScene();
 
         Renderer::Refresh();

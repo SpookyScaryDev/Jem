@@ -3,6 +3,7 @@
 #include "Renderer.h"
 
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <Core/Window/Window.h>
 #include <Renderer/Texture.h>
 #include <Renderer/Camera.h>
@@ -13,6 +14,8 @@ namespace Renderer {
     SDL_Renderer* renderer;
     Vector4d      clearColour;
     Camera        sceneCamera;
+
+    TTF_Font*     font;
 
     // ==================
     // Jem::Renderer::Init
@@ -34,6 +37,7 @@ namespace Renderer {
         JEM_CORE_MESSAGE("Renderer API: ", rendererInfo.name);
 
         clearColour = Vector4d(0, 0, 0, 0);
+        SetFont("C:\\Windows\\Fonts\\consola.ttf", 15);
     }
 
     // ==================
@@ -85,6 +89,38 @@ namespace Renderer {
     // ==================
     void EndScene() {
         sceneCamera = { {0.0, 0.0}, 1.0 };
+    }
+
+
+    // ==================
+    // Jem::Renderer::SetFont
+    // ==================
+    void SetFont(const char* name, unsigned int size) {
+        font = TTF_OpenFont(name, size);
+        JEM_CORE_ASSERT(font, "Renderer::SetFont: Failed to load font ", name);
+    }
+
+    // ==================
+    // Jem::Renderer::DrawString
+    // ==================
+    void DrawString(const Vector2d& position, const char* text, const Vector4d& colour) {
+        int text_width;
+        int text_height;
+        SDL_Surface* surface;
+        SDL_Color textColor = { colour.x, colour.y, colour.z, colour.w };
+        SDL_Rect rect;
+
+        surface = TTF_RenderText_Blended(font, text, textColor);
+        SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
+        text_width = surface->w;
+        text_height = surface->h;
+        SDL_FreeSurface(surface);
+        rect.x = position.x;
+        rect.y = position.y;
+        rect.w = text_width;
+        rect.h = text_height;
+
+        SDL_RenderCopy(renderer, texture, NULL, &rect);
     }
 
     // ==================

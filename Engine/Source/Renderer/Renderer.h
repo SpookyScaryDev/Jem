@@ -22,6 +22,9 @@ namespace Renderer {
     void                    BeginScene(const Camera& camera);
     void                    EndScene();
 
+    void                    SetFont(const char* name, unsigned int size);
+    void                    DrawString(const Vector2d& position, const char* text, const Vector4d& colour = { 255.0, 255.0, 255.0, 255.0 });
+
     void                    DrawLine(const Vector2d& position1, const Vector2d& position2, const Vector4d& colour);
     void                    DrawRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
     void                    DrawFilledRectangle(const Vector2d& position, const Vector2d& size, const Vector4d& colour);
