@@ -8,6 +8,7 @@
 #include <Core/Event/MouseEvent.h>
 #include <Renderer/Renderer.h>
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <Core/Input/Input.h>
 #include <chrono>
 
