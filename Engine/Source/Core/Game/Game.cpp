@@ -77,7 +77,7 @@ void Game::Init(const char* name, int width, int height) const{
         JEM_CORE_ERROR("SDL_Init: Failed to initialize SDL2 - ", SDL_GetError());
     }
 
-    JEM_CORE_MESSAGE("TTF_Init: Initializing SDL_ttf - ", SDL_GetError());
+    JEM_CORE_MESSAGE("TTF_Init: Initializing SDL_ttf");
     if (TTF_Init() == -1) {
         JEM_CORE_ERROR("TTF_Init: Failed to initialize SDL_ttf");
     }
