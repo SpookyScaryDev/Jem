@@ -23,14 +23,15 @@ namespace Renderer {
     void Init() {
         renderer = SDL_CreateRenderer(Window::rawSDLWindow,
             -1,
-            SDL_RENDERER_ACCELERATED |
-            SDL_RENDERER_PRESENTVSYNC
+            SDL_RENDERER_ACCELERATED
         );
 
         if (renderer == nullptr) {
             // The renderer could not be created.
             JEM_CORE_ERROR("Renderer::Init: Failed to create renderer - ", SDL_GetError());
         }
+
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
         SDL_RendererInfo rendererInfo;
         SDL_GetRendererInfo(renderer, &rendererInfo);
