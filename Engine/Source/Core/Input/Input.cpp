@@ -11,6 +11,7 @@
 #include <Core/Event/WindowEvent.h>
 #include <Core/Event/KeyEvent.h>
 #include <Core/Event/MouseEvent.h>
+#include <Core/Event/TextEvent.h>
 
 #include <Core/Maths/Vector2d.h>
 
@@ -72,6 +73,10 @@ namespace Input {
                     EventDispatcher::DispatchEvent(new MouseScrolledEvent(event.wheel.x, event.wheel.y));
                     mouseScrollWheelPosition.x += event.wheel.x;
                     mouseScrollWheelPosition.y += event.wheel.y;
+                    break;
+
+                case SDL_TEXTINPUT:
+                    EventDispatcher::DispatchEvent(new TextInputEvent(event.text.text));
                     break;
             }
         }

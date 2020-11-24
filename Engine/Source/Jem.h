@@ -25,6 +25,7 @@
 #include <Core/Event/KeyEvent.h>
 #include <Core/Event/MouseEvent.h>
 #include <Core/Event/WindowEvent.h>
+#include <Core/Event/TextEvent.h>
 
 // Renderer
 #include <Renderer/Renderer.h>

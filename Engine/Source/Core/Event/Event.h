@@ -10,7 +10,8 @@ namespace Jem {
 enum class EventType {
     WindowClose,
     KeyPressed,  KeyReleased,
-    MouseMoved,  MouseScrolled, MouseButtonPressed, MouseButtonReleased
+    MouseMoved,  MouseScrolled, MouseButtonPressed, MouseButtonReleased,
+    TextInput
 };
 
 // ===============================================================================
