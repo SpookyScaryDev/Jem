@@ -1,7 +1,6 @@
 #pragma once 
 
 #include <Core/Game/Game.h>
-#include <Core/Log/Log.h>
 
 namespace Jem {
 

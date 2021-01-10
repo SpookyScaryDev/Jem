@@ -11,5 +11,4 @@
 
 #include <Core/Core.h>
 #include <Core/Console/Console.h>
-#include <Core/Log/Log.h>
 #include <Core/Assert.h>

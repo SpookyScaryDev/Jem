@@ -50,6 +50,3 @@
 
 // Systems
 #include <Systems/RenderSystem.h>
-
-// Logger macros / static Log.
-#include <Core/Log/Log.h>

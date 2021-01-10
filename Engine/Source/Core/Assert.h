@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <Core/Log/Log.h>
 
 #ifdef JEM_ENABLE_ASSERTIONS
     // Tests expression and breaks with a message on false.
