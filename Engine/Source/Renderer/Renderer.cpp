@@ -97,6 +97,8 @@ namespace Renderer {
     // Jem::Renderer::SetFont
     // ==================
     void SetFont(const char* name, unsigned int size) {
+        if (font) TTF_CloseFont(font);
+
         font = TTF_OpenFont(name, size);
         JEM_CORE_ASSERT(font, "Renderer::SetFont: Failed to load font ", name);
     }
@@ -122,6 +124,8 @@ namespace Renderer {
         rect.h = text_height;
 
         SDL_RenderCopy(renderer, texture, NULL, &rect);
+
+        SDL_DestroyTexture(texture);
     }
 
     // ==================

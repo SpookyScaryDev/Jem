@@ -27,6 +27,9 @@
 #include <Core/Event/WindowEvent.h>
 #include <Core/Event/TextEvent.h>
 
+// Console
+#include <Core/Console/Console.h>
+
 // Renderer
 #include <Renderer/Renderer.h>
 #include <Renderer/Texture.h>
