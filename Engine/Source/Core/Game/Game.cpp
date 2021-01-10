@@ -65,6 +65,8 @@ Game* Game::GetGame() {
 // Jem::Game::Init
 // ==================
 void Game::Init(const char* name, int width, int height) const{
+    Console::Init();
+
     JEM_CORE_MESSAGE("************************************************************");
     JEM_CORE_MESSAGE("Initializing Jem:");
     JEM_CORE_MESSAGE("************************************************************");
@@ -124,6 +126,10 @@ void Game::Run() {
 
             // Update using delta time.
             Update(elapsed.count());
+
+            // Update console.
+            Console::Update();
+            Console::Draw();
 
             // Refresh Renderer.
             Renderer::Refresh();

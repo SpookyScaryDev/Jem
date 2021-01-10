@@ -50,8 +50,6 @@ void SpinnySystem(ECSManager* world) {
 class Sandbox : public Game {
 public:
     Sandbox() : Game("Sandbox", 1600, 900) {
-        Console::Init();
-
         Renderer::SetClearColour({ 50, 50, 50 });
         //EventDispatcher::SetEventCallbackMethod(this, &Sandbox::OnEvent);
 
@@ -121,11 +119,7 @@ public:
         //Console::Warning("test");
         //Console::Error("test");
 
-        Console::Update();
-        Console::Draw();
         Renderer::DrawString({ 1600 - 35, 0 }, std::to_string(fps).c_str());
-
-        Renderer::Refresh();
     }
 
 private:
