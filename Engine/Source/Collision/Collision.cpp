@@ -2,6 +2,10 @@
 #include "Collision.h"
 
 #include <Renderer/Renderer.h>
+#include <Core/Maths/Rectangle.h>
+#include <Collision/AABB.h>
+#include <Collision/CollisionPoly.h>
+#include <Collision/CollisionRect.h>
 
 namespace Jem {
 
@@ -33,8 +37,8 @@ namespace Collision {
     // ==================
     AABB CreateAABBFromCollisionRect(const CollisionRect& rect) {
         AABB aabb;
-        aabb.min = rect.position;
-        aabb.max = rect.size;
+        aabb.min = rect.rect.position;
+        aabb.max = rect.rect.size;
 
         return aabb;
     }
@@ -44,15 +48,15 @@ namespace Collision {
     // ==================
     Poly CreatePolyFromCollisionRect(const CollisionRect& rect) {
         Vector2d center;
-        center.x = rect.position.x + rect.size.x * rect.center.x;
-        center.y = rect.position.y + rect.size.y * rect.center.y;
+        center.x = rect.rect.position.x + rect.rect.size.x * rect.center.x;
+        center.y = rect.rect.position.y + rect.rect.size.y * rect.center.y;
 
         Poly poly;
         poly.position = center;
-        poly.positions[0] = RotatePoint(rect.position, rect.rotation, center);
-        poly.positions[3] = RotatePoint({ rect.position.x + rect.size.x, rect.position.y }, rect.rotation, center);
-        poly.positions[1] = RotatePoint({ rect.position.x, rect.position.y + rect.size.y }, rect.rotation, center);
-        poly.positions[2] = RotatePoint({ rect.position.x + rect.size.x, rect.position.y + rect.size.y }, rect.rotation, center);
+        poly.positions[0] = RotatePoint(rect.rect.position, rect.rotation, center);
+        poly.positions[3] = RotatePoint({ rect.rect.position.x + rect.rect.size.x, rect.rect.position.y }, rect.rotation, center);
+        poly.positions[1] = RotatePoint({ rect.rect.position.x, rect.rect.position.y + rect.rect.size.y }, rect.rotation, center);
+        poly.positions[2] = RotatePoint({ rect.rect.position.x + rect.rect.size.x, rect.rect.position.y + rect.rect.size.y }, rect.rotation, center);
 
         return poly;
     }

@@ -21,10 +21,9 @@ void RenderSystem(ECSManager* world) {
             transform.position,
             transform.scale,
             sprite.texture,
-            sprite.topLeft,
-            sprite.bottomRight,
+            sprite.drawRegion,
+            sprite.clipRegion,
             transform.rotation,
-            transform.center,
             sprite.isFlippedHorizontal,
             sprite.isFlippedVertical
         );

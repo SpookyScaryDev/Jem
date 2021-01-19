@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Core/Maths/Vector2d.h>
+#include <Core/Maths/Rectangle.h>
 
 namespace Jem {
 
@@ -12,8 +13,7 @@ namespace Jem {
 //
 // ===============================================================================
 struct CollisionRect {
-    Vector2d           position;
-    Vector2d           size;
+    Rectangle          rect = { { 0.0, 0.0 }, { 0.0 , 0.0 } };
     double             rotation = 0.0;
     Vector2d           center = { 0.5, 0.5 }; // 0-1 Fraction of width and height
 };

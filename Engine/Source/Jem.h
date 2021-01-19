@@ -14,6 +14,7 @@
 #include <Core/Maths/Vector2d.h>
 #include <Core/Maths/Vector3d.h>
 #include <Core/Maths/Vector4d.h>
+#include <Core/Maths/Rectangle.h>
 
 // Input
 #include <Core/Input/Input.h>

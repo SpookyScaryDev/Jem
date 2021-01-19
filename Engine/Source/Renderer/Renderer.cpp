@@ -7,6 +7,7 @@
 #include <Core/Window/Window.h>
 #include <Renderer/Texture.h>
 #include <Renderer/Camera.h>
+#include <Maths/Rectangle.h>
 
 namespace Jem {
 
@@ -176,12 +177,11 @@ namespace Renderer {
     // ==================
     // Jem::Renderer::DrawTexturedRectangle
     //
-    // Draws the whole texture by default.
     // Angles are in degrees.
     // ==================
     void DrawTexturedRectangle(const Vector2d& position, const Vector2d& size, Texture* texture,
-                               const Vector2d& topLeft, const Vector2d& bottomRight,
-                               double angle, const Vector2d& center,
+                               bool clip, const Rectangle& clipRect,
+                               double angle,
                                bool flipHorizontally, bool flipVertically) {
 
 
@@ -194,11 +194,16 @@ namespace Renderer {
         rect.w = screenSize.x;
         rect.h = screenSize.y;
 
-        SDL_Rect clip;
-        clip.x = texture->GetWidth()  * topLeft.x;
-        clip.y = texture->GetHeight() * topLeft.y;
-        clip.w = texture->GetWidth()  * (bottomRight.x - topLeft.x);
-        clip.h = texture->GetHeight() * (bottomRight.y - topLeft.y);
+        SDL_Rect  clipRectSDL;
+        SDL_Rect* clipRectSDLPointer = &clipRectSDL;
+        if (clip) {
+            clipRectSDL.x = clipRect.position.x;
+            clipRectSDL.y = clipRect.position.y;
+            clipRectSDL.w = clipRect.size.x;
+            clipRectSDL.h = clipRect.size.y;
+        } else {
+            clipRectSDLPointer = nullptr;
+        }
 
         SDL_RendererFlip flip = SDL_FLIP_NONE;
         if (flipVertically && flipHorizontally)    flip = SDL_RendererFlip(SDL_FLIP_VERTICAL | SDL_FLIP_HORIZONTAL);
@@ -206,10 +211,10 @@ namespace Renderer {
         else if (flipHorizontally)    flip = SDL_FLIP_HORIZONTAL;
 
         SDL_Point centerPoint;
-        centerPoint.x = center.x * rect.w;
-        centerPoint.y = center.y* rect.h;
+        centerPoint.x = 0.5 * rect.w;
+        centerPoint.y = 0.5 * rect.h;
 
-        SDL_RenderCopyEx(renderer, texture->GetRawTexture(), &clip, &rect, angle, &centerPoint, flip);
+        SDL_RenderCopyEx(renderer, texture->GetRawTexture(), clipRectSDLPointer, &rect, angle, &centerPoint, flip);
     }
 }
 

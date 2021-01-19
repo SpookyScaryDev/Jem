@@ -2,6 +2,7 @@
 
 #include <Renderer/Texture.h>
 #include <Core/Maths/Vector2d.h>
+#include <Core/Maths/Rectangle.h>
 
 namespace Jem {
 
@@ -14,8 +15,8 @@ struct TextureComponent {
     Texture*        texture;
     bool            isFlippedVertical   = false;
     bool            isFlippedHorizontal = false;
-    Vector2d        topLeft             = { 0.0, 0.0 };
-    Vector2d        bottomRight         = { 1.0, 1.0 };
+    bool            drawRegion          = false; // Whether the clipping rectangle should be used.
+    Rectangle       clipRegion          = { { 0.0, 0.0 }, { 0.0, 0.0 } };
 };
 
 }
