@@ -12,6 +12,7 @@ namespace Jem {
 class Texture {
 public:
                        Texture(const std::string& filePath);
+                       Texture(SDL_Texture* texture);
                        ~Texture();
 
     SDL_Texture*       GetRawTexture() const;

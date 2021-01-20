@@ -24,6 +24,16 @@ Texture::Texture(const std::string& filePath):
 }
 
 // ==================
+// Jem::Texture::Texture
+// ==================
+Texture::Texture(SDL_Texture* texture) :
+    mFilePath("") {
+
+    mTextureData = texture;
+    SDL_QueryTexture(mTextureData, nullptr, nullptr, &mWidth, &mHeight);
+}
+
+// ==================
 // Jem::Texture::~Texture
 // ==================
 Texture::~Texture() {
