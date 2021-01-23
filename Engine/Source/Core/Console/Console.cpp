@@ -14,10 +14,11 @@
 namespace Jem {
 
 namespace Console {
+    Font*    font;
     bool     isShown;
     Vector2d size;
     Vector4d backgroundColour;
-    int      textSize;
+    int      textHeight;
     double   textWidth;
     Vector4d textColour;
 
@@ -74,9 +75,8 @@ namespace Console {
                     break;
 
                 case KeyCode::KEY_RETURN:
-                    if (!command.empty()) {               // Don't bother with empty command
+                    if (!command.empty()) {                // Don't bother with empty command
                         Print(command);
-                        // TODO: Do somei=thing with command!
                         commandHistory.push_back(command); // Add command to history,
                         command = "";                      // New command.
                         commandHistoryPosition = commandHistory.size(); // Move history to most recent.
@@ -98,12 +98,12 @@ namespace Console {
                     break;
 
                 case KeyCode::KEY_DOWN:
-                    if (commandHistoryPosition < commandHistory.size() - 1) {  // If not at start.
+                    if (commandHistoryPosition < (int)commandHistory.size() - 1) {  // If not at start.
                         commandHistoryPosition++;                              // Move forward in history.
-                        command = commandHistory[commandHistoryPosition];      // Set commnand.
+                        command = commandHistory[commandHistoryPosition];      // Set command.
                         cursorPosition = command.size();                       // Move cursor to end of line.
                     }
-                    else if (commandHistoryPosition == commandHistory.size() - 1){ // If returning to cached command  
+                    else if (commandHistoryPosition == (int)commandHistory.size() - 1){ // If returning to cached command  
                         commandHistoryPosition = commandHistory.size();            // Move to backed up command.
                         command = oldCommand;                                      // Set command.
                         cursorPosition = command.size();                           // Move cursor to end of line.
@@ -118,18 +118,28 @@ namespace Console {
         isShown = false;
         size = { 1600.0, 400 };
         backgroundColour = { 0.0, 0.0, 0.0, 210.0 };
-        textSize = 17;
-        textWidth = 9; // TODO: Put in font class.
         textColour = { 255, 255, 255, 255 };
 
         command = "";
 
-        cursorSize = { textWidth, 2 };
         cursorPosition = 0;
         bufferPosition = 0;
         commandHistoryPosition = 0;
 
         EventDispatcher::SetEventCallback(&OnEvent);
+
+        font = new Font("C:\\Windows\\Fonts\\consola.ttf", 17, true);
+
+        textWidth = font->GetGlyphClip(' ').size.x + 1; // TODO: Put in font class.
+        textHeight = font->GetGlyphClip(' ').size.y + 1;
+        cursorSize = { textWidth, 2 };
+    }
+
+    void Shutdown() {
+        if (font != nullptr) {
+            delete font;
+            font = nullptr;
+        }
     }
 
     void Toggle() {
@@ -147,19 +157,18 @@ namespace Console {
     void Draw() {
         if (isShown) {
             Renderer::DrawFilledRectangle({ 0.0, 0.0 }, size, backgroundColour);
-            Renderer::SetFont("C:\\Windows\\Fonts\\consola.ttf", textSize); // TODO: Cache fonts!
 
-            double yPos = size.y - textSize;
-            Renderer::DrawString({ 0.0, yPos }, ("> " + command).c_str());
+            double yPos = size.y - textHeight;
+            Renderer::DrawString({ 0.0, yPos }, ("> " + command).c_str(), font);
             Renderer::DrawFilledRectangle({ (cursorPosition + 2) * textWidth, size.y - cursorSize.y }, cursorSize, { 255.0, 255.0, 255.0, 255.0 });
 
             // Draw text in console.
-            yPos -= textSize;
+            yPos -= textHeight;
             for (int i = buffer.size() - bufferPosition - 1; i >= 0; i--) {
-                yPos -= textSize;
+                yPos -= textHeight;
                 if (yPos < 0.0) break;
 
-                Renderer::DrawString({ 0.0, yPos }, buffer[i].c_str(), colours[i]);
+                Renderer::DrawString({ 0.0, yPos }, buffer[i].c_str(), font, colours[i]);
             }
         }
     }

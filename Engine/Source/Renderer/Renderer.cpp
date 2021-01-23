@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <Core/Window/Window.h>
+#include <Renderer/Font.h>
 #include <Renderer/Texture.h>
 #include <Renderer/Camera.h>
 #include <Maths/Rectangle.h>
@@ -16,7 +17,8 @@ namespace Renderer {
     Vector4d      clearColour;
     Camera        sceneCamera;
 
-    TTF_Font*     font;
+    Font*         defaultFont;
+    Font*         font;
 
     // ==================
     // Jem::Renderer::Init
@@ -39,13 +41,20 @@ namespace Renderer {
         JEM_CORE_MESSAGE("Renderer API: ", rendererInfo.name);
 
         clearColour = Vector4d(0, 0, 0, 0);
-        SetFont("C:\\Windows\\Fonts\\consola.ttf", 15);
+
+        defaultFont = new Font("C:\\Windows\\Fonts\\consolabab.ttf", 24, true);
+        font = defaultFont;
     }
 
     // ==================
     // Jem::Renderer::Shutdown
     // ==================
     void Shutdown() {
+        delete defaultFont;
+        if (font != nullptr) {
+            delete font; 
+            font = nullptr;
+        }
         SDL_DestroyRenderer(renderer);
         renderer = nullptr;
     }
@@ -97,36 +106,61 @@ namespace Renderer {
     // ==================
     // Jem::Renderer::SetFont
     // ==================
-    void SetFont(const char* name, unsigned int size) {
-        if (font) TTF_CloseFont(font);
-
-        font = TTF_OpenFont(name, size);
-        JEM_CORE_ASSERT(font, "Renderer::SetFont: Failed to load font ", name);
+    void SetFont(Font* newFont) {
+        font = newFont;
     }
 
     // ==================
     // Jem::Renderer::DrawString
+    //
+    // TODO: Add newline support.
+    // ==================
+    void DrawString(const Vector2d& position, const char* text, Font* font, const Vector4d& colour) {
+        SDL_SetTextureColorMod(font->GetTextureAtlas()->GetRawTexture(), colour.x, colour.y, colour.z);
+
+        SDL_Rect  dest;
+        SDL_Rect  source;
+        Rectangle sourceRect;
+        int i = 0;
+        int x = 1;
+        const char* stringChar = text;
+
+        // Loop through string.
+        while (*stringChar != '\0') {
+            // Don't render anything for space.
+            if (*stringChar == 32) {
+                x += int(font->GetGlyphClip(' ').size.x);
+                stringChar++;
+                continue;
+            }
+
+            sourceRect = font->GetGlyphClip(*stringChar);
+
+            source.x = sourceRect.position.x;
+            source.y = sourceRect.position.y;
+            source.w = sourceRect.size.x;
+            source.h = sourceRect.size.y;
+
+            dest.w = source.w;
+            dest.h = source.h;
+            dest.x = position.x + x;
+            dest.y = position.y;
+
+            SDL_RenderCopy(renderer, font->GetTextureAtlas()->GetRawTexture(), &source, &dest);
+
+            i++;
+            x += source.w + 1; // Add some padding.
+            stringChar++;
+        }
+    }
+
+    // ==================
+    // Jem::Renderer::DrawString
+    //
+    // Draws using the font set with SetFont, or uses the default font.
     // ==================
     void DrawString(const Vector2d& position, const char* text, const Vector4d& colour) {
-        int text_width;
-        int text_height;
-        SDL_Surface* surface;
-        SDL_Color textColor = { colour.x, colour.y, colour.z, colour.w };
-        SDL_Rect rect;
-
-        surface = TTF_RenderText_Blended(font, text, textColor);
-        SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, surface);
-        text_width = surface->w;
-        text_height = surface->h;
-        SDL_FreeSurface(surface);
-        rect.x = position.x;
-        rect.y = position.y;
-        rect.w = text_width;
-        rect.h = text_height;
-
-        SDL_RenderCopy(renderer, texture, NULL, &rect);
-
-        SDL_DestroyTexture(texture);
+        DrawString(position, text, font, colour);
     }
 
     // ==================

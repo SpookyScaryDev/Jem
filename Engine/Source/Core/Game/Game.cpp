@@ -65,8 +65,6 @@ Game* Game::GetGame() {
 // Jem::Game::Init
 // ==================
 void Game::Init(const char* name, int width, int height) const{
-    Console::Init();
-
     JEM_CORE_MESSAGE("************************************************************");
     JEM_CORE_MESSAGE("Initializing Jem:");
     JEM_CORE_MESSAGE("************************************************************");
@@ -92,6 +90,8 @@ void Game::Init(const char* name, int width, int height) const{
     Input::Init();
 
     JEM_CORE_MESSAGE("************************************************************");
+
+    Console::Init();
 }
 
 // ==================
@@ -100,6 +100,7 @@ void Game::Init(const char* name, int width, int height) const{
 void Game::Shutdown() const{
     JEM_CORE_MESSAGE("Shutting down engine.");
 
+    Console::Shutdown();
     Input::Shutdown();
     Renderer::Shutdown();
     Window::Destroy();

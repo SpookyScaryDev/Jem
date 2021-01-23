@@ -6,8 +6,6 @@ using namespace Jem;
 struct PhysicsComponent {
     Vector2d velocity  = { 0.0, 0.0 };
     Vector2d drag      = { 0.0, 0.0 };
-    //Vector2d gravity   = { 0.0, 0.0 };
-    //Vector2d gravity   = { 0.0, 0.0 };
 };
 
 void PhysicsSystem(ECSManager* world, double dt) {
@@ -51,12 +49,11 @@ class Sandbox : public Game {
 public:
     Sandbox() : Game("Sandbox", 1600, 900) {
         Renderer::SetClearColour({ 50, 50, 50 });
-        //EventDispatcher::SetEventCallbackMethod(this, &Sandbox::OnEvent);
 
         body = CollisionRect();
 
-        body.position = { 100, 500 };
-        body.size = { 50, 50 };
+        body.rect.position = { 100, 500 };
+        body.rect.size = { 50, 50 };
         body.rotation = 0;
 
         base = CollisionRect();
@@ -99,25 +96,9 @@ public:
 
         Renderer::BeginScene(camera);
         RenderSystem(&world);
-        //Renderer::DrawFilledRectangle({ 0,0 }, { 500,500 }, { 0,255,0 });
-        //Renderer::DrawRectangle({ 0,0 }, { 500,500 }, { 255,0,0 });
-        //Renderer::DrawLine({ 0,0 }, { 500, 500 }, { 255, 0, 0 });
-
-        //base.position = world.GetComponent<TransformComponent>(10).position;
-        //base.rotation = world.GetComponent<TransformComponent>(10).rotation;
-        //base.size = { 250, 250 };
-
-        //JEM_WARNING("Collision: ", Collision::RectVsRect(base, body));
-
         Renderer::EndScene();
 
         int fps = int(1000.0 / deltaTime / 1000.0);
-
-        //Console::textColour = { double(rand() % 255), double(rand() % 255), double(rand() % 255), 255 };
-        //Console::Print("FPS is: ", fps);
-        //Console::Message("test");
-        //Console::Warning("test");
-        //Console::Error("test");
 
         Renderer::DrawString({ 1600 - 35, 0 }, std::to_string(fps).c_str());
     }

@@ -20,10 +20,12 @@ namespace Console {
     extern bool         isShown;
     extern Vector2d     size;
     extern Vector4d     backgroundColour;
-    extern int          textSize;
+    extern int          textHeight;
     extern Vector4d     textColour;
     
     void                Init();
+    void                Shutdown();
+
     void                Update();
     void                Draw();
 
